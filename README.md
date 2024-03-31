@@ -5,3 +5,7 @@ An Android Studio App that uses the TensorFlow model Keras for image recognition
     Set Author - Julien de la Bruère-Terreault (drgfreeman@tuta.io)
 
     Set URL - https://www.kaggle.com/datasets/drgfreeman/rockpaperscissors
+
+Model Accuracy - 99.36%
+
+Made on Google Colab, a Jupyter Notebook service from Google that allows for easy integration of TensorFlow
