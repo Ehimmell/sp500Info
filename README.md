@@ -9,3 +9,5 @@ An Android Studio App that uses the TensorFlow model Keras for image recognition
 Model Accuracy - 99.36%
 
 Made on Google Colab, a Jupyter Notebook service from Google that allows for easy integration of TensorFlow
+
+    URL - https://colab.google/
