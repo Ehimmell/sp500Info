@@ -8,7 +8,7 @@ An Android Studio App that uses the TensorFlow model Keras for image recognition
 
 Model Accuracy - <100%
     
-    Model loss, or the frequency of a hallucination, is so low the Google Colab approximated Model Accuracy to be 100%
+    Model loss, or the frequency of a hallucination, is so low that Google Colab approximated Model Accuracy to be 100%
 
 Model trained on Google Colab, a Jupyter Notebook service from Google that allows for easy integration of TensorFlow
 
