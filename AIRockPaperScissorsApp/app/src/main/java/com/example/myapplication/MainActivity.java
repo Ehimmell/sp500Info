@@ -7,18 +7,15 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmapgit ;
+import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -40,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     Button camera;
     ImageView imageView;
     TextView result;
+
+    TextView counter;
     int imageSize = 32;
 
     int requestCode;
@@ -52,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
         camera = findViewById(R.id.button);
 
         result = findViewById(R.id.result);
+
+        counter = findViewById(R.id.counterResult);
+
         imageView = findViewById(R.id.imageView);
 
         camera.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +108,17 @@ public class MainActivity extends AppCompatActivity {
                     maxPos = i;
                 }
             }
-            String[] classes = {"hmps", "hmrs", "Hand Making Scissors Symbol"};
+            String[] classes = {"Paper", "Rock", "Scissors"};
+            switch (classes[maxPos]) {
+                case "Paper":
+                    counter.setText(classes[2]);
+                    break;
+                case "Rock":
+                    counter.setText(classes[0]);
+                    break;
+                case "Scissors":
+                    counter.setText(classes[1]);
+            }
             result.setText(classes[maxPos]);
 
             // Releases model resources if no longer used.
