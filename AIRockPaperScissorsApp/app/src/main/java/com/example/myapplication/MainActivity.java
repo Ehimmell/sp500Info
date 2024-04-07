@@ -1,4 +1,12 @@
+/* Code that prompts the user to take a picture, extracts the RGB values from each pixel in the image, classifies it via tfLite model, and displays what the user should play
+in order to counter what the model classified the given image as. 
 
+While I, Ethan Himmell, wrote a majority of this code, the code used to feed and extract RGB values was taken from an individual known as ishaanjav on GitHub.
+This individual created a very similar project as I did 2 years before I started this, and when I was curious on how to integrate my TFLite model to Android Studio,
+I came across his work. While it's licensed under an MIT License, which allows virtually unrestricted use, I still feel grateful that I was able to utilize a part of 
+ishaanjav's code to save time, and want to give credit where it is due.
+
+Created by Ethan Himmell on April 7, 2024. */
 
 package com.example.myapplication;
 
@@ -33,7 +41,7 @@ import java.nio.ByteOrder;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    //Initialize Screen Elements from main activity
     Button camera;
     ImageView imageView;
 
@@ -45,11 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
     int requestCode;
 
+    //Set on create behavior, or what the app should do upon being opened
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Relate the various components I created earlier to their actual layout counterparts
         camera = findViewById(R.id.button);
 
         result = findViewById(R.id.result);
@@ -60,9 +70,12 @@ public class MainActivity extends AppCompatActivity {
 
         counterView = findViewById(R.id.imageView2);
 
+        //Set onClickListener, or what the button should do upon click
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //Checks if cmaera permissions are given, if so prompt the user to take a picture. If not, request them.
                 if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
                     Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     requestCode = 3;
@@ -76,13 +89,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void classifyImage(Bitmap image){
         try {
+
+            //Initialize Model
             NewModel model = NewModel.newInstance(getApplicationContext());
 
-            // Creates inputs for reference.
+
+            //ishaanjav's code
+            // Creates inputs for reference with correct dimensions
             TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 32, 32, 3}, DataType.FLOAT32);
             ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3);
             byteBuffer.order(ByteOrder.nativeOrder());
-
+            
             int[] intValues = new int[imageSize * imageSize];
             image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
             int pixel = 0;
@@ -98,21 +115,29 @@ public class MainActivity extends AppCompatActivity {
 
             inputFeature0.loadBuffer(byteBuffer);
 
-            // Runs model inference and gets result.
+
+            //Back to my code
+            // Runs model and gets the model's image prediction
             NewModel.Outputs outputs = model.process(inputFeature0);
             TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
             float[] confidences = outputFeature0.getFloatArray();
-            // find the index of the class with the biggest confidence.
+            // find which class the AI is most confident the image falls into
             int maxPos = 0;
             float maxConfidence = 0;
             for (int i = 0; i < confidences.length; i++) {
+
+                //If the current confidence is greater than the highest, new highest is current confidence
                 if (confidences[i] > maxConfidence) {
                     maxConfidence = confidences[i];
                     maxPos = i;
                 }
             }
+
+            //Define Different classes for images to fall under
             String[] classes = {"Paper", "Rock", "Scissors"};
+
+            //Run a switch on the AI's prediction, and set the "counter move" accordingly
             switch (classes[maxPos]) {
                 case "Paper":
                     counter.setText(classes[2]);
@@ -135,15 +160,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Method to tell the onclicklistener to do once it has received an image
     ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
 
                     @Override
+                    //Define received image behavior
                     public void onActivityResult(ActivityResult result) {
                         int resultCode = result.getResultCode();
                         Intent data = result.getData();
                         if(resultCode == RESULT_OK){
+
+                                //gets the image and gives it to the classifyimage method
                                 Bitmap image = (Bitmap) data.getExtras().get("data");
                                 int dimension = Math.min(image.getWidth(), image.getHeight());
                                 image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
