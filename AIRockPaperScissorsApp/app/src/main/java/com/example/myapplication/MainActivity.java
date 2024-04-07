@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         result = findViewById(R.id.result);
 
-        counter = findViewById(R.id.counterResult);
+        counter = findViewById(R.id.counterresult);
 
         imageView = findViewById(R.id.imageView);
 

@@ -38,7 +38,7 @@
         android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/classified"
+        android:layout_below="@id/classified"
         android:layout_centerHorizontal="true"
         android:textColor="#C30000"
         android:textSize="27sp"
@@ -48,21 +48,22 @@
         android:id="@+id/shouldplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_below="@id/result"
+        android:layout_below="@id/result"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10sp"
         android:text="You Should Play:"
         android:textAlignment="center"
-        android:layout_marginTop="10sp"
-        tools:textSize="20sp"
-        tools:textStyle="bold" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/counterResult"
+        android:id="@+id/counterresult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_below="@id/shouldplay"
-        tools:layout_centerHorizontal="true"
-        tools:textColor="#2196F3"
-        tools:textSize="27sp" />
+        android:layout_below="@id/shouldplay"
+        android:layout_centerHorizontal="true"
+        android:textColor="#C30000"
+        android:textSize="27sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>
