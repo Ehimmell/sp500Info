@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     Button camera;
     ImageView imageView;
+
+    ImageView counterView;
     TextView result;
 
     TextView counter;
@@ -55,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         counter = findViewById(R.id.counterresult);
 
         imageView = findViewById(R.id.imageView);
+
+        counterView = findViewById(R.id.imageView2);
 
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,12 +116,16 @@ public class MainActivity extends AppCompatActivity {
             switch (classes[maxPos]) {
                 case "Paper":
                     counter.setText(classes[2]);
+                    counterView.setImageResource(R.drawable.scissors);
                     break;
                 case "Rock":
                     counter.setText(classes[0]);
+                    counterView.setImageResource(R.drawable.paper);
                     break;
                 case "Scissors":
                     counter.setText(classes[1]);
+                    counterView.setImageResource(R.drawable.rock);
+                    break;
             }
             result.setText(classes[maxPos]);
 
