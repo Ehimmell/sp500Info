@@ -39,14 +39,7 @@ data_for_prediction = sp500.iloc[-1].copy()
 del data_for_prediction["Tomorrow"]
 data_for_prediction = data_for_prediction[new_predictors]
 
-print(data_for_prediction)
-print(data_for_prediction.values.reshape(1, -1))
-
 print("Predicting...")
-
-print(data_for_prediction.values.reshape(1, -1))
-
-print(len(data))
 
 prediction = loaded_model.predict(data_for_prediction.values.reshape(1, -1))
 def whatToDo():
