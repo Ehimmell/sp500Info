@@ -37,9 +37,9 @@ data = sp500.iloc[-100:]
 
 loaded_model.fit(data[new_predictors], data["Target"])
 
-data_for_prediction = sp500.iloc[-1].copy()  # Assuming sp500 is your DataFrame with historical data
-del data_for_prediction["Tomorrow"]  # Remove the 'Tomorrow' column if present
-data_for_prediction = data_for_prediction[new_predictors]  # Selecting the predictors used in the model
+data_for_prediction = sp500.iloc[-1].copy()
+del data_for_prediction["Tomorrow"]
+data_for_prediction = data_for_prediction[new_predictors]
 
 # Making the prediction
 prediction = loaded_model.predict(data_for_prediction.values.reshape(1, -1))
