@@ -9,12 +9,12 @@ with open('sp500_model.pkl', 'rb') as file:
     loaded_model = pickle.load(file)
 
 sp500 = yf.Ticker("^GSPC")
-sp500 = sp500.history(period="300d")
+sp500 = sp500.history(period="10y")
 
 del sp500["Dividends"]
 del sp500["Stock Splits"]
 
-horizons = [2, 5, 10, 20, 30]
+horizons = [2,5,60,250,1000]
 new_predictors = []
 
 sp500["Tomorrow"] = sp500["Close"].shift(-1)
@@ -33,17 +33,22 @@ for horizon in horizons:
 
 sp500 = sp500.dropna()
 
-data = sp500.iloc[-100:]
-
-loaded_model.fit(data[new_predictors], data["Target"])
+data = sp500.iloc[-100]
 
 data_for_prediction = sp500.iloc[-1].copy()
 del data_for_prediction["Tomorrow"]
 data_for_prediction = data_for_prediction[new_predictors]
 
-# Making the prediction
-prediction = loaded_model.predict(data_for_prediction.values.reshape(1, -1))
+print(data_for_prediction)
+print(data_for_prediction.values.reshape(1, -1))
 
+print("Predicting...")
+
+print(data_for_prediction.values.reshape(1, -1))
+
+print(len(data))
+
+prediction = loaded_model.predict(data_for_prediction.values.reshape(1, -1))
 def whatToDo():
     if(prediction == 1): return "BUY!!!!!! NOW!!!!!!!"
     return "SELL SELL SELL!!!!!!!!!!!!!"
