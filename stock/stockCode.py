@@ -11,6 +11,8 @@ with open('sp500_model.pkl', 'rb') as file:
 sp500 = yf.Ticker("^GSPC")
 sp500 = sp500.history(period="10y")
 
+daysPrevious = input("How many days back would you like to see the average change? ")
+
 horizons = [2,5,60,250,1000]
 new_predictors = []
 
@@ -44,13 +46,16 @@ def whatToDo():
     return "SELL SELL SELL!!!!!!!!!!!!!"
 
 def derivative():
-    daysPrevious = input("How many days back would you like to see the average change? ")
     data = sp500.iloc[-int(daysPrevious):].copy()
     data["Daily Change"] = (data["Close"] - data["Open"]).astype(float)
     return data["Daily Change"].mean()
+def sumChange():
+    return derivative() * int(daysPrevious)
 
 print("Prediction for tomorrow's stock:", whatToDo())
 
-print("Average change in stock price over the last x days: ", derivative())
+print("Average change in stock price over the last x day", derivative())
+
+print("Total change over last x days:", sumChange())
 
 
