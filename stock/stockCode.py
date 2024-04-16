@@ -54,7 +54,7 @@ def sumChange():
 
 print("Prediction for tomorrow's stock:", whatToDo())
 
-print("Average change in stock price over the last x day", derivative())
+print("Average change in stock price over the last x days", derivative())
 
 print("Total change over last x days:", sumChange())
 
