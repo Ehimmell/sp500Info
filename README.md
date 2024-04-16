@@ -1,7 +1,7 @@
 
 Welcome to the sp500Info repository, home of the simplest stock summary out there!
 
-Here, the only two metrics are whether the stock market news is good or bad, and whether to buy and sell or not.
+Here, the only two metrics are whether the stock market news is good or bad, and whether to buy or sell.
 ____________________________________________________________________________________________________________________
 
 **Behind the Curtain-**
