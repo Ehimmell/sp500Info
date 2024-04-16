@@ -3,7 +3,7 @@ Welcome to the sp500Info repository, home of the simplest stock summary out ther
 Here, the only two metrics are whether the stock market news is good or bad, and whether to buy and sell or not.
 ____________________________________________________________________________________________________________________
 
-**Behind the Curtain- **
+**Behind the Curtain-**
 
 This repository is a project to summarize the S&P 500 using two simple metrics- whether to buy or sell, and whether the news surrounding the market is good or not.
 
