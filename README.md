@@ -20,6 +20,6 @@ This model is correct about the rise and fall of stocks 64% of the time, meaning
 
 Request is used to request the front page of the WSJ, which features the most relevant stock stories for the day. Each story is then classified as good for stock market, bad for stock market, or not about stock. The Not Abouts are removed, and then the code parses through each good or bad, adding 1 to a "tick variable" for every good news story it comes across. The tick variable, which at this point is equal to the number of good stories, is then divided by the total number to get the proportion of good stories. If the proportion is higher than 0.5, the code treats the news as having a positive outlook on the stock market.
 
-**Model Accuaracy - <94%**
+**News Model Accuaracy - <94%**
 
 This model is trained by classifying fake news headlines as good, bad or not about stock, which is easier than going off of purely numerical data, like the stock model. For this reason, it's able to be a lot more accurate about the outlook of the news. Also, the large sample of stories (>50) makes the law of large of large numbers come into play, making the number of hallucinations (wrong predictions) in the sample closer to the average number overall. 
