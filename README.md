@@ -1,3 +1,4 @@
+
 Welcome to the sp500Info repository, home of the simplest stock summary out there!
 
 Here, the only two metrics are whether the stock market news is good or bad, and whether to buy and sell or not.
@@ -22,8 +23,3 @@ Request is used to request the front page of the WSJ, which features the most re
 **Model Accuaracy - <94%**
 
 This model is trained by classifying fake news headlines as good, bad or not about stock, which is easier than going off of purely numerical data, like the stock model. For this reason, it's able to be a lot more accurate about the outlook of the news. Also, the large sample of stories (>50) makes the law of large of large numbers come into play, making the number of hallucinations (wrong predictions) in the sample closer to the average number overall. 
-
-
-
-
-
