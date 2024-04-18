@@ -2,11 +2,12 @@
 Welcome to the sp500Info repository, home of the simplest stock summary out there!
 
 Here, the only two metrics are whether the stock market news is good or bad, and whether to buy or sell.
-____________________________________________________________________________________________________________________
+_____________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 **Behind the Curtain-**
 
 This repository is a project to summarize the S&P 500 using two simple metrics- whether to buy or sell, and whether the news surrounding the market is good or not.
+_____________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 **Stock Rise or Fall Predictions-**
 
@@ -15,6 +16,7 @@ To get Stock Market Data, Yahoo finance is used to retrieve data from the last t
 **Stock Model Acccuracy - <59%**
 
 This model is correct about the rise and fall of stocks 64% of the time, meaning that money can be made off of it. However, it's not a guarantee, and is only slightly more likely to be right than wrong.
+_____________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 **News Analysis-**
 
