@@ -12,7 +12,7 @@ This repository is a project to summarize the S&P 500 using two simple metrics- 
 
 To get Stock Market Data, Yahoo finance is used to retrieve data from the last ten years. Why ten years? Because in addition to metrics, users will have the option to create their own graphs or simple summaries using all the data retrieved, and ten years is more than enough data for anyone's graphing needs. To make predictions, two new metrics are created for every day in the stock market- the trend (going up or down a certain number of days), and the proportion of day x's closing price over the average closing price. This helps to indicate that a trend might end, or the price is so high it won't get much higher. This is then given to the model in order to make an accurate prediction of price change.
 
-**Stock Model Acccuracy - <57%**
+**Stock Model Acccuracy - <59%**
 
 This model is correct about the rise and fall of stocks 64% of the time, meaning that money can be made off of it. However, it's not a guarantee, and is only slightly more likely to be right than wrong.
 
