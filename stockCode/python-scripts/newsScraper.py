@@ -10,7 +10,6 @@ req_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb
     'Accept-Encoding' : 'gzip',
     'DNT' : '1',
     'Connection' : 'close'}
-
 response = rq.get('https://www.wsj.com', headers=req_headers)
 
 if response.status_code == 200:
