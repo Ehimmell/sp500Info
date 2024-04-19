@@ -34,21 +34,13 @@ if response.status_code == 200:
         reader = csv.reader(file)
         existing_articles = list(reader)
 
-    # Flatten the list of lists into a single list
     existing_articles = [item for sublist in existing_articles for item in sublist]
 
-    # Your code to get the articles
-    # ...
-
-    # For each article
     for article in articles:
-        # If the article is not in the existing articles
         if article not in existing_articles:
-            # Add it to the existing articles
             existing_articles.append(article)
 
-    # Write the existing articles back to the CSV file
-    with open('../headLines.csv', 'w', newline='') as file:
+    with open('../headLines.csv', 'w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
         for article in existing_articles:
             writer.writerow([article])
