@@ -31,22 +31,33 @@ if response.status_code == 200:
         articles += [headline]
 
     with open('../headLines.csv', 'r') as file:
+
         reader = csv.reader(file)
+
         existing_articles = list(reader)
 
     existing_articles = [item for sublist in existing_articles for item in sublist]
 
     for article in articles:
+
         if article not in existing_articles:
+
             existing_articles.append(article)
 
     with open('../headLines.csv', 'w', newline='', encoding='utf-8') as file:
+
         writer = csv.writer(file)
+
         for article in existing_articles:
+
             writer.writerow([article])
 
     with open('../runTimes.csv', 'a', newline='') as file:
+
         writer = csv.writer(file)
+
         now = datetime.datetime.now()
+
         writer.writerow([now.strftime("%Y-%m-%d %H:%M:%S")])
+
         writer.writerow(["size: "+ str(len(existing_articles))])
