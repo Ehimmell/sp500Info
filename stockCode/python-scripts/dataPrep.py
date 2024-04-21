@@ -60,6 +60,7 @@ def prepare500Data():
     return sp500
 
 def clean(titles):
+
     nltk.download('punkt')
     nltk.download('wordnet')
     nltk.download('stopwords')
@@ -69,9 +70,11 @@ def clean(titles):
 
     cleaned_titles = []
     for title in titles:
+
         tokens = word_tokenize(title)
 
         words = [word for word in tokens if word not in stop_words]
+
         words = [lemmatizer.lemmatize(word) for word in words]
 
         cleaned_titles.append(' '.join(words))
