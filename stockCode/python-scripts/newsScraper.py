@@ -10,7 +10,6 @@ req_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb
     'Accept-Encoding' : 'gzip',
     'DNT' : '1',
     'Connection' : 'close'}
-
 response = rq.get('https://www.wsj.com', headers=req_headers)
 
 if response.status_code == 200:
@@ -31,7 +30,7 @@ if response.status_code == 200:
 
         articles += [headline]
 
-    with open('headLines.csv', 'r') as file:
+    with open('../headLines.csv', 'r') as file:
         reader = csv.reader(file)
         existing_articles = list(reader)
 
@@ -49,12 +48,12 @@ if response.status_code == 200:
             existing_articles.append(article)
 
     # Write the existing articles back to the CSV file
-    with open('headLines.csv', 'w', newline='') as file:
+    with open('../headLines.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         for article in existing_articles:
             writer.writerow([article])
 
-    with open('runTimes.csv', 'a', newline='') as file:
+    with open('../runTimes.csv', 'a', newline='') as file:
         writer = csv.writer(file)
         now = datetime.datetime.now()
         writer.writerow([now.strftime("%Y-%m-%d %H:%M:%S")])
