@@ -10,7 +10,6 @@ req_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb
     'Accept-Encoding' : 'gzip',
     'DNT' : '1',
     'Connection' : 'close'}
-
 response = rq.get('https://www.wsj.com', headers=req_headers)
 
 if response.status_code == 200:
@@ -31,31 +30,34 @@ if response.status_code == 200:
 
         articles += [headline]
 
-    with open('headLines.csv', 'r') as file:
+    with open('../headLines.csv', 'r') as file:
+
         reader = csv.reader(file)
+
         existing_articles = list(reader)
 
-    # Flatten the list of lists into a single list
     existing_articles = [item for sublist in existing_articles for item in sublist]
 
-    # Your code to get the articles
-    # ...
-
-    # For each article
     for article in articles:
-        # If the article is not in the existing articles
+
         if article not in existing_articles:
-            # Add it to the existing articles
+
             existing_articles.append(article)
 
-    # Write the existing articles back to the CSV file
-    with open('headLines.csv', 'w', newline='') as file:
+    with open('../headLines.csv', 'w', newline='', encoding='utf-8') as file:
+
         writer = csv.writer(file)
+
         for article in existing_articles:
+
             writer.writerow([article])
 
-    with open('runTimes.csv', 'a', newline='') as file:
+    with open('../runTimes.csv', 'a', newline='') as file:
+
         writer = csv.writer(file)
+
         now = datetime.datetime.now()
+
         writer.writerow([now.strftime("%Y-%m-%d %H:%M:%S")])
+
         writer.writerow(["size: "+ str(len(existing_articles))])
