@@ -1,43 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="theme-color" content="#000000"/>
     <meta
-      name="description"
-      content="Web site created using create-react-app"
+            name="500Info Home Page"
+            content="Web site created using create-react-app"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+        .sticky-top {
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+            display: flex; /* Make the direct children layout in a row */
+            width: 100%;
+            min-height: 100px;
+            background: linear-gradient(to bottom, darkgray, blanchedalmond);
+            background-size: 300% 100%; /* Make the background larger than the element */
+            align-items: center;
+        }
+
+        .sticky-top > * {
+            margin-right: 20px;
+        }
+
+        .logo-header {
+            border: 2px solid black;
+            border-radius: 50%;
+            height: 70px;
+            width: 70px;
+            margin: 15px;
+        }
+
+        .main-body {
+            background-color: blanchedalmond;
+        }
+
+        .logo-header:hover {
+            transform: scale(1.2);
+            transition: 0.8s;
+        }
+
+        .title {
+            padding-top: 10%;
+            font-family: Arial, sans-serif;
+        }
+
+        .title-add {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 10px;
+            padding-top: 10px;
+        }
+
+        .sticky-option {
+            font-family: Arial, sans-serif;
+            padding-left: 100px;
+        }
+
+        .function {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            display: flex;
+            padding-left: 7%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            transform: translateY(100px);
+            align-content: center;
+            background: linear-gradient(blanchedalmond 3%, wheat 12%, wheat 88%, blanchedalmond 97%);
+        }
+
+
+        .function-description {
+            display: block;
+            width: 100px;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-family: Arial, sans-serif
+        }
+
+
+        .desc-top {
+            padding-bottom: 10px;
+        }
+
+        .desc-bottom {
+            font-size: 15px;
+        }
+    </style>
     <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+</head>
+<body class="main-body">
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root">
+    <div class="sticky-top">
+        <img class="logo-header" src="./logo.png" alt="500Info Logo" onclick="window.scrollTo(0, 0)"/>
+        <div>
+            <h3 class="title">500<strong><em>Info</em></strong></h3>
+            <p class="title-add">Top Stock Metrics, <strong>Made Easy.</strong></p>
+        </div>
+        <h3 class="sticky-option">Predict▼</h3>
+        <h3 class="sticky-option">Analyze▼</h3>
+        <h3 class="sticky-option">About</h3>
+        <h3 class="sticky-option">Help▼</h3>
+        <h3 class="sticky-option">Support Us</h3>
+    </div>
+    <div class="function">
+        <img src="News.jpg" alt="News" width="300" height="200"/>
+        <div class="function-description">
+            <h3 class="desc-top">News Intelligence</h3>
+            <p class="desc-bottom">Assessments of the sway of stock market news</p>
+        </div>
+        <img src="download.jpg" alt="Predict" width="300" height="200"/>
+        <div class="function-description">
+            <h3 class="desc-top">S&P 500 Predictions</h3>
+            <p class="desc-bottom">Predictive analysis of stock market trends</p>
+        </div>
+    </div>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+</div>
+</body>
 </html>
