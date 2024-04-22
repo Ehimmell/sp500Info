@@ -108,6 +108,11 @@
             background-color: aliceblue;
         }
 
+        .credits {
+            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+            margin-top: 50px;
+        }
+
         .brief-header {
             font-family: Signifier, 'Times New Roman', Times, serif;
             font-size: 20px;
