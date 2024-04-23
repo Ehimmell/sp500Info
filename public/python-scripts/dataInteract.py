@@ -52,6 +52,7 @@ def sendDailyPrediction():
 
     spDB.close()
 
+#will need to make this method work for every date there is a prediction for
 def getDailyPrediction():
 
     today = pd.Timestamp.today().strptime('%Y-%m-%d')
