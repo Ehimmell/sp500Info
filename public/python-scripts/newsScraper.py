@@ -20,7 +20,7 @@ def scrape():
 
             articles += [headline]
 
-        for item in clean.select(constants.BULLET
+        for item in clean.select(constants.BULLET):
             headline = item.select_one("h4").get_text()
 
             articles += [headline]
