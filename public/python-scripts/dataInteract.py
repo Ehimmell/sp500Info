@@ -34,9 +34,12 @@ def sendDailyPrediction():
 
     print(prediction)
 
-    toInsert = [prediction[constants.STOCKPRED_SELL],prediction[constants.STOCKPRED_BUY],pd.Timestamp.today().strptime('%Y-%m-%d')]
+    toInsert = [prediction[constants.STOCKPRED_SELL],prediction[constants.STOCKPRED_BUY],pd.Timestamp.today().normalize().timestamp() * 1000000000]
 
     toInsert = pd.DataFrame([toInsert], columns=['Sell','Buy','Date'])
+
+    # Convert the 'Date' column to Unix timestamps
+    toInsert['Date'] = toInsert['Date'].apply(lambda x: pd.to_datetime(x).timestamp())
 
     # Check if the table exists
     cursor = spDB.cursor()
@@ -55,7 +58,9 @@ def sendDailyPrediction():
 #will need to make this method work for every date there is a prediction for
 def getDailyPrediction():
 
-    today = pd.Timestamp.today().strptime('%Y-%m-%d')
+    today = pd.Timestamp.today().normalize().timestamp()
+
+    print(today)
 
     spDB = sqlite3.connect(constants.DBPATH)
 
@@ -67,4 +72,5 @@ def getDailyPrediction():
 
     return prediction['Buy'].values[0]
 
-
+sendDailyPrediction()
+getDailyPrediction()
