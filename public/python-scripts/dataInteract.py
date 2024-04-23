@@ -60,8 +60,6 @@ def getDailyPrediction():
 
     today = pd.Timestamp.today().normalize().timestamp()
 
-    print(today)
-
     spDB = sqlite3.connect(constants.DBPATH)
 
     prediction = pd.read_sql_query(f"SELECT * FROM {constants.STOCKPRED_TABLE} WHERE Date = {today}", spDB)
@@ -71,6 +69,3 @@ def getDailyPrediction():
     spDB.close()
 
     return prediction['Buy'].values[0]
-
-sendDailyPrediction()
-getDailyPrediction()

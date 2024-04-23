@@ -9,7 +9,7 @@ def predict(sp500):
 
   preds = model.predict_proba(sp500[constants.PREDICTORS])
 
-  tomorrowPred = preds[-2]
+  tomorrowPred = preds[-1]
 
   return tomorrowPred
 
