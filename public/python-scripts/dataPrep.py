@@ -5,22 +5,20 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
-from textblob import TextBlob
+import constants
 
 def prepare500Data():
 
-    sp500 = yf.Ticker("^GSPC")
+    sp500 = yf.Ticker(constants.SP500_TICKER)
 
     sp500 = sp500.history(period="20y")
 
     sp500.index
 
-    horizons = [2,5,60,250,1000]
-
     sp500["Tomorrow"] = sp500["Close"].shift(-1)
     sp500["Target"] = (sp500["Tomorrow"] > sp500["Close"]).astype(int)
 
-    for horizon in horizons:
+    for horizon in constants.ROLLING_HORIZONS:
         rolling_averages = sp500.rolling(horizon).mean()
 
         ratio_column = f"Close_Ratio_{horizon}"
@@ -36,9 +34,6 @@ def prepare500Data():
 
     stocks = {ticker: yf.Ticker(ticker).history(period="max") for ticker in tickers}
 
-    import pandas as pd
-    import numpy as np
-
     for ticker, data in stocks.items():
         data['Price Change'] = np.sign(data['Close'] - data['Open'])
 
@@ -48,8 +43,7 @@ def prepare500Data():
 
     sp500 = sp500.merge(mode_price_change.rename('Mode Price Change'), left_index=True, right_index=True, how='left')
 
-    horizons = [2, 5, 60, 250, 1000]
-    for horizon in horizons:
+    for horizon in constants.ROLLING_HORIZONS:
         trend_key_change = f'Trend_Key_Change_{horizon}'
         sp500[trend_key_change] = sp500['Mode Price Change'].shift(1).rolling(horizon).sum()
 
@@ -60,9 +54,6 @@ def prepare500Data():
     return sp500
 
 def clean(titles):
-    nltk.download('punkt')
-    nltk.download('wordnet')
-    nltk.download('stopwords')
 
     stop_words = set(stopwords.words('english'))
     lemmatizer = WordNetLemmatizer()
