@@ -48,14 +48,14 @@ def prepare500Data():
 
     sp500 = sp500.merge(mode_price_change.rename('Mode Price Change'), left_index=True, right_index=True, how='left')
 
-    sp500 = sp500.dropna()
-
     horizons = [2, 5, 60, 250, 1000]
     for horizon in horizons:
         trend_key_change = f'Trend_Key_Change_{horizon}'
         sp500[trend_key_change] = sp500['Mode Price Change'].shift(1).rolling(horizon).sum()
 
     del sp500['Mode Price Change']
+
+    sp500 = sp500.dropna()
 
     return sp500
 
