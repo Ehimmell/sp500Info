@@ -24,5 +24,3 @@ def priceGraph(timeFrame):
     plt.title(f'S&P 500 Price Over {timeFrame}  Days')
 
     plt.show()
-
-
