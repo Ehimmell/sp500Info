@@ -4,6 +4,9 @@ import dataPrep
 import stockPredict
 import constants
 
+#This method currently sends the last 20 years of stock market data to the DB every time it is called. Because the last 20 years before today is already on there.
+#My initial thought would be to add a parameter for the amount of data to prep, but this would conflict with rolling average computation. Maybe add code
+#to call the data from the db, recomputate the rolling average with today + whatever that returns, and then send that to the db.
 def sendDailyStock():
     spDB = sqlite3.connect(constants.DBPATH)
 
