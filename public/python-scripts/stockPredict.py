@@ -12,8 +12,3 @@ def predict(sp500):
   tomorrowPred = preds[-1]
 
   return tomorrowPred
-
-
-
-
-
