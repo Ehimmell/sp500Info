@@ -1,14 +1,14 @@
 STOCKPRED_BUY = 1
 STOCKPRED_SELL = 0
 
-STOCK_MODEL_PATH = 'C:/code/Git/stockCode/public/updatedSPModel.pkl'
+STOCK_MODEL_PATH = '/Users/himme/Downloads/git/stock/sp500Info/public/updatedSPModel.pkl'
 
-DBPATH = "C:/code/Git/stockCode/public/sp500Data.db"
+DBPATH = "/Users/himme/Downloads/git/stock/sp500Info/public/500Data.sqlite3"
 SP500_TABLE = "sp500_table"
 STOCKPRED_TABLE = "stock_pred_table"
 
-HEADLINES_PATH = "C:/code/Git/stockCode/public/headLines.csv"
-RUNTIMES_PATH = "C:/code/Git/stockCode/public/runTimes.csv"
+HEADLINES_PATH = "/Users/himme/Downloads/git/stock/sp500Info/public/headLines.csv"
+RUNTIMES_PATH = "/Users/himme/Downloads/git/stock/sp500Info/public/runtimes.csv"
 
 BUY_THRESH = 0.57
 

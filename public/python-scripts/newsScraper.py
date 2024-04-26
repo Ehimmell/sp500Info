@@ -4,6 +4,7 @@ import csv
 import datetime
 import dataPrep
 import constants
+import lxml
 
 
 def scrape():
@@ -25,7 +26,7 @@ def scrape():
 
             articles += [headline]
 
-        with open(constants.HEADLINES_PATH, 'r') as file:
+        with open(constants.HEADLINES_PATH, 'r', encoding='utf-8') as file:
             reader = csv.reader(file)
             existing_articles = list(reader)
 
@@ -36,14 +37,16 @@ def scrape():
                 existing_articles.append(article)
         existing_articles = dataPrep.clean(existing_articles)
 
-        with open(constants.HEADLINES_PATH, 'w', newline='') as file:
+        with open(constants.HEADLINES_PATH, 'w', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
             for article in existing_articles:
                 writer.writerow([article])
             writer.writerow(["    "])
 
-        with open(constants.RUNTIMES_PATH, 'a', newline='') as file:
+        with open(constants.RUNTIMES_PATH, 'a', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
             now = datetime.datetime.now()
             writer.writerow([now.strftime("%Y-%m-%d %H:%M:%S")])
             writer.writerow(["size: " + str(len(existing_articles))])
+
+scrape()
