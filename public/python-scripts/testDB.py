@@ -1,3 +1,4 @@
+# Description: This file contains the unit tests for the database connection and the existence of the tables in the database.
 import os
 import unittest
 from sqlalchemy import create_engine
@@ -6,13 +7,17 @@ import constants
 import pandas as pd
 
 class TestDBConnection(unittest.TestCase):
+
+    #set up the test
     def setUp(self):
         DATABASE_URL = os.getenv("DATABASE_URL").replace("postgres://", "postgresql://")
         self.engine = create_engine(DATABASE_URL)
 
+    #tear down the test
     def tearDown(self):
         self.engine.dispose()
 
+    #test the database connection
     def test_db_connection(self):
         try:
             connection = self.engine.connect()
@@ -20,6 +25,7 @@ class TestDBConnection(unittest.TestCase):
         except OperationalError:
             self.fail("Could not establish a connection to the database")
 
+    #test the existence of the sp500 table
     def test_sp500_table(self):
         try:
             connection = self.engine.connect()
@@ -28,6 +34,7 @@ class TestDBConnection(unittest.TestCase):
         except OperationalError:
             self.fail("Could not establish a connection to the database")
 
+    #test the existence of the stockpred table
     def test_stockpred_table(self):
         try:
             connection = self.engine.connect()
@@ -36,5 +43,6 @@ class TestDBConnection(unittest.TestCase):
         except OperationalError:
             self.fail("Could not establish a connection to the database")
 
+#run the tests
 if __name__ == '__main__':
     unittest.main()
