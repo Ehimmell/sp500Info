@@ -1,0 +1,128 @@
+* {
+            margin: 0;
+            padding: 0;
+        }
+
+        .sticky-top {
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+            display: flex; /* Make the direct children layout in a row */
+            width: 100%;
+            min-height: 100px;
+            background: linear-gradient(to bottom, darkgray, ghostwhite);
+            background-size: 300% 100%; /* Make the background larger than the element */
+            align-items: center;
+        }
+
+        .sticky-top > * {
+            margin-right: 20px;
+        }
+
+        .logo-header {
+            border: 2px solid black;
+            border-radius: 50%;
+            height: 70px;
+            width: 70px;
+            margin: 15px;
+        }
+
+        .main-body {
+            background-color: ghostwhite;
+            overflow-y: scroll;
+        }
+
+        .logo-header:hover {
+            transform: scale(1.2);
+            transition: 0.8s;
+        }
+
+        .title {
+            padding-top: 10%;
+            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif
+        }
+
+        .title-add {
+            font-family: Signifier, 'Times New Roman', Times, serif;
+            font-size: 10px;
+            padding-top: 10px;
+        }
+
+        .sticky-option {
+            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+            padding-left: 100px;
+        }
+
+        .function {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            display: flex;
+            padding-left: 7%;
+            padding-top: 70px;
+            padding-bottom: 70px;
+            transform: translateY(100px);
+            align-content: center;
+            border: 2px solid darkgray;
+            background-color: aliceblue;
+        }
+
+        a {
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Inherits color from parent element */
+    background-color: transparent; /* Makes background transparent */
+    border: none; /* Removes border */
+}
+
+
+        .function-description {
+            display: block;
+            width: 100px;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif
+        }
+
+
+        .desc-top {
+            padding-bottom: 10px;
+            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif
+        }
+
+        .desc-bottom {
+            font-size: 15px;
+            padding-top: 10px;
+        }
+
+        .desc-brief {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: 300px;
+            padding-left: 7%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            transform: translateY(300px);
+            border: 2px solid darkgray;
+            background-color: aliceblue;
+        }
+
+        .credits {
+            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+            margin-top: 50px;
+        }
+
+        .brief-header {
+            font-family: Signifier, 'Times New Roman', Times, serif;
+            font-size: 20px;
+            align-content: center;
+        }
+
+        .brief-content {
+            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+            font-size: 25px;
+            width: 80%; /* Limit the width to 80% of the parent container */
+            margin: 0 auto; /* Center the text within the parent container */
+            padding: 0 10%; /* Add 10% padding to the left and right */
+        }
