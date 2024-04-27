@@ -3,7 +3,6 @@ STOCKPRED_SELL = 0
 
 STOCK_MODEL_PATH = '/Users/himme/Downloads/git/stock/sp500Info/public/updatedSPModel.pkl'
 
-DBPATH = "/Users/himme/Downloads/git/stock/sp500Info/public/500Data.sqlite3"
 SP500_TABLE = "sp500_table"
 STOCKPRED_TABLE = "stock_pred_table"
 

@@ -1,5 +1,6 @@
-import newsScraper
+
 import dataInteract
+import newsScraper
 
 newsScraper.scrape()
 dataInteract.sendDailyStock()
