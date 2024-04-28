@@ -25,25 +25,32 @@ export function StickyHeader({ onAboutClick }) {
 }
 
 export function Features() {
-    return (<div className="function">
-        <img src="News.jpg" alt="News" width="300" height="200"/>
-        <div className="function-description">
-            <h3 className="desc-top">News Intelligence</h3>
-            <p className="desc-bottom">Assessments of the sway of stock market news</p>
-            <p className="desc-bottom"><strong>Try</strong></p>
-        </div>
-        <img src="download.jpg" alt="Predict" width="300" height="200"/>
-        <div className="function-description">
-            <h3 className="desc-top">S&P 500 Predictions</h3>
-            <p className="desc-bottom">Predictive analysis of stock market trends</p>
-            <p className="desc-bottom"><strong>Try</strong></p>
-        </div>
-        <img src="download.png" alt="Analyze" width="300" height="200"/>
-        <div className="function-description">
-            <h3 className="desc-top">Stock Analysis</h3>
-            <p className="desc-bottom">In-depth analysis of stock market data, including statistics and graphs</p>
-            <p className="desc-bottom"><strong>Try</strong></p>
-        </div>
+    return (
+        <div>
+            <div className={"function"}>
+                <img src="News.jpg" alt="News" className="function-image"/>
+                <div className="function-description">
+                    <h3 className="desc-top">News Intelligence</h3>
+                    <p className="desc-bottom">Assessments of the sway of stock market news</p>
+                    <p className="desc-bottom"><strong>Try</strong></p>
+                </div>
+            </div>
+            <div className={"function"}>
+                <img src="download.jpg" alt="Predict" className="function-image"/>
+                <div className="function-description">
+                    <h3 className="desc-top">S&P 500 Predictions</h3>
+                    <p className="desc-bottom">Predictive analysis of stock market trends</p>
+                    <p className="desc-bottom"><strong>Try</strong></p>
+                </div>
+            </div>
+            <div className={"function"}>
+                <img src="download.png" alt="Analyze" className={"function-image"}/>
+                <div className="function-description">
+                    <h3 className="desc-top">Stock Analysis</h3>
+                    <p className="desc-bottom">In-depth analysis of stock market data, including statistics and graphs</p>
+                    <p className="desc-bottom"><strong>Try</strong></p>
+                </div>
+            </div>
     </div>
     );
 }
