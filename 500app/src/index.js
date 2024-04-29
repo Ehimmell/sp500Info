@@ -8,9 +8,11 @@ import React, { useState } from 'react';
 function Index() {
   const [about, setAbout] = useState(false);
 
-  const handleAboutClick = (isAbout) => {
-    setAbout(isAbout);
-  };
+  const handleAboutClick = (buttonId) => {
+  const isAbout = buttonId === 'about';
+  setAbout(isAbout);
+  console.log(`handleAboutClick called with ${buttonId}, setting about to ${isAbout}`);
+};
 
   const renderPage = () => {
     if (about) {
