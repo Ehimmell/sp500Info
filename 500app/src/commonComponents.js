@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './index.css';
 
-export function StickyHeader({onAboutClick}) {
+export function StickyHeader({onButtonClick}) {
     const [clickedButton, setClickedButton] = useState(null)
     const handleClick = (buttonId) => {
     setClickedButton(buttonId);
-    onAboutClick(buttonId);
+    onButtonClick(buttonId);
 }
 
     return (
@@ -185,4 +185,26 @@ export function Pitch() {
             to make predictions and metrics about
             all things stock related.</strong></p>
     </div>);
+}
+
+export function PredictBio() {
+    return (
+        <div className="bio-pitch">
+            <h1 className="h1-bio">
+                Predict
+            </h1>
+            <p>
+                Uses a Machine Learning model to predict whether the S&P 500 will go up or down the next day.
+            </p>
+        </div>
+
+    )
+}
+
+export function TodayPrediction() {
+    return (
+        <div className="daily-pred-container">
+            <button className="pred-button">Get Today's Prediction</button>
+        </div>
+    )
 }

@@ -197,3 +197,25 @@
             font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
             padding-left: 3.3%;
         }
+
+        .daily-pred-container {
+            display:flex;
+            background-color: aliceblue;
+            border: 2px solid darkgray;
+            padding-top: 5%;
+            padding-bottom: 5%;
+            padding-left: 10%;
+            position: relative;
+            transform: translateY(30%);
+        }
+
+        .pred-button {
+            background: none;
+            color: inherit;
+            border: none;
+            font-size: 27px;
+            padding: 0;
+            font-family: Signifier, 'Times New Roman', Times, serif;
+            cursor: pointer;
+            outline: none;
+        }
