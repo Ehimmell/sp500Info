@@ -1,4 +1,4 @@
-* {
+        * {
             margin: 0;
             padding: 0;
         }
@@ -48,19 +48,18 @@
             padding-top: 10px;
         }
 
-        .sticky-option {
-            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-            padding-left: 100px;
+        .title:hover {
+            cursor: pointer;
         }
 
         .function {
             width: 100%;
-            height: 200px;
-            position: relative;
             display: flex;
-            padding-left: 7%;
-            padding-top: 70px;
-            padding-bottom: 70px;
+            position: relative;
+            padding-top:3.5%;
+            margin-top: 3.5%;
+            margin-bottom: 3.5%;
+            padding-bottom: 3.5%;
             transform: translateY(100px);
             align-content: center;
             border: 2px solid darkgray;
@@ -68,25 +67,25 @@
         }
 
         a {
-    text-decoration: none; /* Removes underline */
-    color: inherit; /* Inherits color from parent element */
-    background-color: transparent; /* Makes background transparent */
-    border: none; /* Removes border */
-}
+            text-decoration: none; /* Removes underline */
+            color: inherit; /* Inherits color from parent element */
+            background-color: transparent; /* Makes background transparent */
+            border: none; /* Removes border */
+        }
 
 
         .function-description {
             display: block;
-            width: 100px;
             padding-left: 20px;
-            padding-right: 20px;
+            padding-right: 30px;
             font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif
         }
 
 
         .desc-top {
             padding-bottom: 10px;
-            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif
+            font-family: Signifier, 'Times New Roman', Times, serif;
+            font-size: 45px;
         }
 
         .desc-bottom {
@@ -99,30 +98,124 @@
             align-items: center;
             position: relative;
             width: 100%;
-            height: 300px;
-            padding-left: 7%;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            transform: translateY(300px);
+            padding-top: 7%;
+            padding-bottom: 7%;
             border: 2px solid darkgray;
+            transform: translateY(130%);
             background-color: aliceblue;
         }
 
+        .function-image {
+            height: 15%;
+            width:22.5%;
+            padding-left: 5%;
+        }
+
         .credits {
-            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-            margin-top: 50px;
+            font-family: Signifier, 'Times New Roman', Times, serif;
+            margin-top: 20%;
+            margin-bottom: 2.5%;
         }
 
         .brief-header {
+            padding-left:5%;
             font-family: Signifier, 'Times New Roman', Times, serif;
-            font-size: 20px;
+            font-size: 15px;
             align-content: center;
         }
 
         .brief-content {
             font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-            font-size: 25px;
-            width: 80%; /* Limit the width to 80% of the parent container */
+            font-size: 17px;
+            padding-left: 5%;
+            width: 75%; /* Limit the width to 80% of the parent container */
             margin: 0 auto; /* Center the text within the parent container */
-            padding: 0 10%; /* Add 10% padding to the left and right */
+            overflow: clip;
+        }
+
+        .bio-container {
+            transform: translateY(4%);
+            background-color: aliceblue;
+            border: 2px solid darkgray;
+            padding-top: 5%;
+            padding-bottom: 5%;
+        }
+
+        .bio-content {
+            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+            font-size: 23px;
+            justify-content: center;
+            padding-left: 10%;
+            width: 75%; /* Limit the width to 80% of the parent container */
+            margin-top:3%;
+            overflow: clip;
+        }
+
+        .p-bio{
+            padding-top:1%;
+            line-height: 1.25;
+        }
+
+        .h3-bio{
+            padding-top:3%;
+            padding-bottom:2%;
+        }
+
+        .li-bio{
+            padding-top:0.75%;
+            line-height: 1.8;
+        }
+
+        .bio-pitch {
+            width: 75%;
+            overflow: clip;
+            margin-left:10%;
+            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+            margin-top:20%;
+            line-height: 1.25;
+        }
+
+        .h1-bio{
+            font-size: 90px;
+            margin-bottom: 2%;
+            font-family: Signifier, 'Times New Roman', Times, serif;
+        }
+
+        .menu-button {
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+            padding-left: 3.3%;
+            font-size:inherit;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .sticky-option {
+            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+            padding-left: 3.3%;
+        }
+
+        .daily-pred-container {
+            display:flex;
+            background-color: aliceblue;
+            border: 2px solid darkgray;
+            padding-top: 5%;
+            padding-bottom: 5%;
+            padding-left: 10%;
+            position: relative;
+            transform: translateY(30%);
+        }
+
+        .pred-button {
+            background: none;
+            color: inherit;
+            border: none;
+            font-size: 27px;
+            padding: 0;
+            font-family: Signifier, 'Times New Roman', Times, serif;
+            cursor: pointer;
+            outline: none;
         }

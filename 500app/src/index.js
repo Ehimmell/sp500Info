@@ -1,20 +1,40 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App.js';
-import {StickyHeader, Features, Brief} from './commonComponents.js';
-import reportWebVitals from './reportWebVitals.js';
+import About from './About.js';
+import Predict from './Predict.js';
+import {StickyHeader} from './commonComponents.js';
+import React, { useState } from 'react';
+
+function Index() {
+  const [about, setAbout] = useState(false);
+  const [predict, setPredict] = useState(false);
+
+  const handleClick = (buttonId) => {
+  const isAbout = buttonId === 'about';
+  const isPredict = buttonId === 'predict';
+  setAbout(isAbout);
+  setPredict(isPredict);
+  console.log(`handleAboutClick called with ${buttonId}, setting about to ${isAbout}`);
+};
+
+  const renderPage = () => {
+    if (about) {
+      return <About />;
+    } else if (predict) {
+      return <Predict />;
+    } else {
+      return <App />;
+    }
+  };
+
+  return (
+    <React.StrictMode>
+        <StickyHeader onButtonClick={handleClick} />
+        {renderPage()}
+    </React.StrictMode>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <StickyHeader />
-      <Features />
-      <Brief />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+root.render(<Index />);
