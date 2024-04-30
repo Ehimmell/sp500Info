@@ -1,5 +1,5 @@
 #class to prepare and clean any data for the models
-
+import nltk
 #Imports
 import pandas as pd
 import yfinance as yf
@@ -74,7 +74,6 @@ def prepare500Data():
 
 #Method to clean the headlines
 def clean(titles):
-
     #get the stop words and lemmatizer
     stop_words = set(stopwords.words('english'))
     lemmatizer = WordNetLemmatizer()

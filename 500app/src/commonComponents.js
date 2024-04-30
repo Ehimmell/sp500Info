@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './index.css';
+import { getDailyPrediction } from './api.js';
 
 export function StickyHeader({onButtonClick}) {
     const [clickedButton, setClickedButton] = useState(null)
@@ -202,9 +203,36 @@ export function PredictBio() {
 }
 
 export function TodayPrediction() {
+
+    const [prediction, setPrediction] = useState('');
+    const handleClick = async () => {
+        const prediction = await getDailyPrediction();
+        setPrediction(prediction);
+    }
+
+    let predNum = parseFloat(prediction);
+
+    const predExplaination = () =>{
+        if(prediction != 'Error fetching prediction' && prediction != 'Error: Failed to fetch daily predictions' && prediction != '') {
+            if (predNum > 0.55) {
+                return "The S&P 500 is likely to go up today.";
+            } else if (predNum < 0.45) {
+                return "The S&P 500 is likely to go down today.";
+            } else {
+                return "The S&P 500 is likely to stay the same today.";
+            }
+        } else {
+            return "";
+        }
+    }
     return (
-        <div className="daily-pred-container">
-            <button className="pred-button">Get Today's Prediction</button>
+        <div>
+            <h1 className = "pred-header">Today's Stock Prediction</h1>
+            <div className="daily-pred-container">
+                <button className="pred-button" onClick={handleClick}>Get Today's Prediction</button>
+                <p className="pred">{prediction}</p>
+                <p className="pred-explain">{predExplaination()}</p>
+            </div>
         </div>
     )
 }

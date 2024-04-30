@@ -206,16 +206,37 @@
             padding-bottom: 5%;
             padding-left: 10%;
             position: relative;
-            transform: translateY(30%);
+            margin-top: 1%;
         }
 
         .pred-button {
-            background: none;
+            background: ghostwhite;
             color: inherit;
-            border: none;
+            border: 2px solid darkgray;
             font-size: 27px;
             padding: 0;
             font-family: Signifier, 'Times New Roman', Times, serif;
             cursor: pointer;
             outline: none;
+        }
+
+        .pred {
+            margin-top: 0.8%;
+            margin-left:10%;
+            font-size: 20px;
+            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .pred-explain {
+            margin-top: 1%;
+            margin-left:10%;
+            font-size: 20px;
+            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .pred-header {
+            font-family: Signifier, 'Times New Roman', Times, serif;
+            font-size: 30px;
+            margin-left: 10%;
+            padding-top: 15%;
         }
