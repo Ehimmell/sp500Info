@@ -130,8 +130,6 @@ def scrapeYahooFinance():
             headline = item.get_text()
             articles += [headline]
 
-        print(articles)
-
         with open(constants.HEADLINES_PATH, 'r', encoding='utf-8') as file:
             reader = csv.reader(file)
             existing_articles = list(reader)
@@ -156,8 +154,6 @@ def scrapeYahooFinance():
             writer.writerow([now.strftime("%Y-%m-%d %H:%M:%S")])
             writer.writerow(["size: " + str(len(existing_articles))])
 
-
-scrapeYahooFinance()
 def scrapeAll():
     scrapeWSJ()
     scrapeCNNBiz()
