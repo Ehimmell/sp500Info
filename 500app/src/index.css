@@ -209,6 +209,24 @@
             margin-top: 1%;
         }
 
+        .select-analyze {
+            font-family: Signifier, 'Times New Roman', Times, serif;
+            font-size: 30px;
+            margin-left: 10%;
+            position: relative;
+            margin-top:3%;
+        }
+
+        .select-analyze::-ms-expand {
+            display: none;
+        }
+
+        .select-analyze::after {
+            content: '▼';
+            position: absolute;
+            right: 10px;
+        }
+
         .pred-button {
             background: ghostwhite;
             color: inherit;
@@ -240,3 +258,11 @@
             margin-left: 10%;
             padding-top: 15%;
         }
+
+        .analyze-select-header {
+            font-family: Signifier, 'Times New Roman', Times, serif;
+            font-size: 30px;
+            margin-left: 10%;
+        }
+
+
