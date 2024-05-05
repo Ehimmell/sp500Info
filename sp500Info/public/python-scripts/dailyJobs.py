@@ -2,9 +2,15 @@
 import dataInteract
 import newsScraper
 
+scrape = input("Scrape the news? (y or n): ")
+sendStock = input("Would you like to send the daily stock data to the db? (y or n): ")
+sendPrediction = input("Would you like to send the daily prediction to the db? (y or n): ")
 #Scrape the news
-newsScraper.scrape()
+if(scrape == 'y'):
+    newsScraper.scrapeAll()
 #Send the daily stock data to heroku postgres db
-dataInteract.sendDailyStock()
+if(sendStock == 'y'):
+    dataInteract.sendDailyStock()
 #Send the daily prediction to heroku postgres db
-dataInteract.sendDailyPrediction()
+if(sendPrediction == 'y'):
+    dataInteract.sendDailyPrediction()

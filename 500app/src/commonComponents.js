@@ -236,3 +236,17 @@ export function TodayPrediction() {
         </div>
     )
 }
+
+export function AnalyzeExplain() {
+    return (
+        <div className="bio-pitch">
+            <h1 className="h1-bio">
+                Analyze
+            </h1>
+            <p>
+                Analyze is a tool that allows users to create their own graphs and statistics concerning the stock
+                market.
+            </p>
+        </div>
+    )
+}
