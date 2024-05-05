@@ -48,8 +48,6 @@ def scrapeWSJ():
         for article in articles:
             if article not in existing_articles:
                 existing_articles.append(article)
-        #clean the articles
-        existing_articles = dataPrep.clean(existing_articles)
 
         #write the cleaned articles to the csv file
         with open(constants.HEADLINES_PATH, 'w', newline='', encoding='utf-8') as file:
@@ -99,8 +97,6 @@ def scrapeCNNBiz():
             if article not in existing_articles:
                 existing_articles.append(article)
 
-        #clean the articles
-        existing_articles = dataPrep.clean(existing_articles)
 
         #write the cleaned articles to the csv file
         with open(constants.HEADLINES_PATH, 'w', newline='', encoding='utf-8') as file:
@@ -139,8 +135,6 @@ def scrapeYahooFinance():
         for article in articles:
             if article not in existing_articles:
                 existing_articles.append(article)
-
-        existing_articles = dataPrep.clean(existing_articles)
 
         with open(constants.HEADLINES_PATH, 'w', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
