@@ -273,25 +273,34 @@ export function AnalyzeExplain() {
         setAnalyzeMode(e.target.value);
     }
 
+    const [timeFrame, setTimeFrame] = useState(5);
+
+    const handleTimeFrameChange = (e) => {
+        setTimeFrame(e.target.value);
+    }
+
     useEffect(() => {
-        if (analyzeMode === 'graph') {
-            const src = async () => {
-                try {
-                    const data = await getTrendGraph();
-                    setGraphSource(`data:image/png;base64,${data}`);
-                } catch (error) {
-                    console.error('Error fetching graph data:', error);
-                }
-            }
-            src();
+    const src = async () => {
+        try {
+            const data = await getTrendGraph(timeFrame);
+            setGraphSource(`data:image/png;base64,${data}`);
+        } catch (error) {
+            console.error('Error fetching graph data:', error);
         }
-    }, [analyzeMode])
+    }
+    src();
+}, [timeFrame]);
 
     const comp = () => {
         if (analyzeMode === 'graph') {
             return (
                 <div>
-                    {graphSource && <img src={graphSource} alt="Graph"/>}
+                    <div className="graph-container">
+                        <input value={timeFrame} onChange={handleTimeFrameChange} type="number"/>
+                    </div>
+                    <div className={"graph-container"}>
+                        {graphSource && <img src={graphSource} alt="Graph"/>}
+                    </div>
                 </div>
             )
         } else {

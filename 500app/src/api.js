@@ -17,10 +17,10 @@ export async function getDailyPrediction() {
     }
 }
 
-export async function getTrendGraph() {
+export async function getTrendGraph(timeFrame) {
     try {
         console.log("fetching");
-        const response = await fetch('http://127.0.0.1:5000/api/daily-stock', {mode: 'cors'});
+        const response = await fetch(`http://127.0.0.1:5000/api/daily-stock?timeFrame=${timeFrame}`, {mode: 'cors'});
         if (!response.ok) {
             throw new Error('Failed to fetch daily stock data');
         }

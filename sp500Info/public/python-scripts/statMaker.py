@@ -13,12 +13,19 @@ def trendGraph(timeFrame):
     #get the last 20 years of stock data
     sp500 = dataInteract.getDailyStock()
 
+    sp500["Tomorrow"] = sp500["Close"].shift(-1)
+    sp500["Target"] = (sp500["Tomorrow"] > sp500["Close"]).astype(int)
+
     #get the last x days of stock data
+    trend_column = f"Trend_{timeFrame}"
+    sp500[trend_column] = sp500.shift(1).rolling(timeFrame).sum()["Target"]
+
     sp500 = sp500.iloc[-timeFrame:]
 
     # Check if the column exists and is a Series or DataFrame
     trend = sp500[f'Trend_{timeFrame}']
     if isinstance(trend, (pd.Series, pd.DataFrame)):
+        plt.clf()
         #plot the trend
         trend.plot(figsize=(10, 6))
 
@@ -40,10 +47,15 @@ def trendGraph(timeFrame):
 #Method to create a price graph
 def priceGraph(timeFrame):
 
+    plt.clf()
+
     #get the last 20 years of stock data
     sp500 = dataInteract.getDailyStock()
 
     sp500 = pd.DataFrame(sp500)
+
+    sp500["Tomorrow"] = sp500["Close"].shift(-1)
+    sp500["Target"] = (sp500["Tomorrow"] > sp500["Close"]).astype(int)
 
     #get the last x days of stock data
     sp500 = sp500.iloc[-timeFrame:]

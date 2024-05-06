@@ -14,7 +14,8 @@ def get_prediction():
 
 @app.route('/api/daily-stock', methods=['GET'])
 def get_price_graph():
-    return jsonify(statMaker.trendGraph(5))
+    time_frame = request.args.get('timeFrame', default=5, type=int)
+    return jsonify(statMaker.trendGraph(time_frame))
 
 if __name__ == '__main__':
     app.run(debug=True)
