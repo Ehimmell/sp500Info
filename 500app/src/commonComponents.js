@@ -304,6 +304,7 @@ export function AnalyzeExplain() {
                         <input value={timeFrame} onChange={handleTimeFrameChange} type="number"/>
                         <select className={"select-analyze"} onChange={handleTypeSelect}>
                             <option value={'price'}>Price Graph</option>
+                            <option value={'price_ratio'}>Price Ratio Graph</option>
                             <option value={'trend'}>Trend Graph</option>
                         </select>
                     </div>
