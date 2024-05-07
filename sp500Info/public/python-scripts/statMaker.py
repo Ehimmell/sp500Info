@@ -46,7 +46,6 @@ def trendGraph(timeFrame):
 
 #Method to create a price graph
 def priceGraph(timeFrame):
-
     plt.clf()
 
     #get the last 20 years of stock data
@@ -60,17 +59,34 @@ def priceGraph(timeFrame):
     #get the last x days of stock data
     sp500 = sp500.iloc[-timeFrame:]
 
-    #plot the price
-    sp500['Close'].plot(figsize=(10, 6))
-
-    #set the title
-    plt.title(f'S&P 500 Price Over {timeFrame}  Days')
-
-    #show the plot
-    plt.show()
-
-def temp():
-    return trendGraph(5)
+    rolling_averages = sp500.rolling(timeFrame).mean()
+    ratio_column = f"Price_{timeFrame}"
+    sp500[ratio_column] = sp500["Close"] / rolling_averages["Close"]
 
 
-temp()
+    # Check if the column exists and is a Series or DataFrame
+    trend = sp500[f'Price_{timeFrame}']
+    if isinstance(trend, (pd.Series, pd.DataFrame)):
+        #plot the price
+        sp500['Close'].plot(figsize=(10, 6))
+
+        #set the title
+        plt.title(f'S&P 500 Price Ratio Over {timeFrame}  Days')
+
+        buf = io.BytesIO()
+        plt.savefig(buf, format='png')
+        buf.seek(0)
+
+        string = base64.b64encode(buf.read())
+
+        uri = urllib.parse.quote(string)
+
+        return uri
+    else:
+        print(f"Cannot plot 'Trend_{timeFrame}' as it is not a Series or DataFrame.")
+
+def getGraph(timeFrame, type):
+    if(type == 'price'):
+        return priceGraph(timeFrame)
+    elif(type == 'trend'):
+        return trendGraph(timeFrame)

@@ -268,9 +268,14 @@ export function TodayPrediction() {
 export function AnalyzeExplain() {
     const [analyzeMode, setAnalyzeMode] = useState('graph');
     const [graphSource, setGraphSource] = useState(null);
+    const [graphType, setGraphType] = useState('price');
 
     const handleSelect = (e) => {
         setAnalyzeMode(e.target.value);
+    }
+
+    const handleTypeSelect = (e) => {
+        setGraphType(e.target.value)
     }
 
     const [timeFrame, setTimeFrame] = useState(5);
@@ -282,14 +287,14 @@ export function AnalyzeExplain() {
     useEffect(() => {
     const src = async () => {
         try {
-            const data = await getTrendGraph(timeFrame);
+            const data = await getTrendGraph(timeFrame, graphType);
             setGraphSource(`data:image/png;base64,${data}`);
         } catch (error) {
             console.error('Error fetching graph data:', error);
         }
     }
     src();
-}, [timeFrame]);
+}, [timeFrame, graphType]);
 
     const comp = () => {
         if (analyzeMode === 'graph') {
@@ -297,6 +302,10 @@ export function AnalyzeExplain() {
                 <div>
                     <div className="graph-container">
                         <input value={timeFrame} onChange={handleTimeFrameChange} type="number"/>
+                        <select className={"select-analyze"} onChange={handleTypeSelect}>
+                            <option value={'price'}>Price Graph</option>
+                            <option value={'trend'}>Trend Graph</option>
+                        </select>
                     </div>
                     <div className={"graph-container"}>
                         {graphSource && <img src={graphSource} alt="Graph"/>}
