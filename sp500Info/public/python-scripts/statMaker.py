@@ -22,27 +22,7 @@ def trendGraph(timeFrame):
 
     sp500 = sp500.iloc[-timeFrame:]
 
-    # Check if the column exists and is a Series or DataFrame
-    trend = sp500[f'Trend_{timeFrame}']
-    if isinstance(trend, (pd.Series, pd.DataFrame)):
-        plt.clf()
-        #plot the trend
-        trend.plot(figsize=(10, 6))
-
-        #set the title
-        plt.title(f'S&P 500 Day Trend Over {timeFrame} Days')
-
-        buf = io.BytesIO()
-        plt.savefig(buf, format='png')
-        buf.seek(0)
-
-        string = base64.b64encode(buf.read())
-
-        uri = urllib.parse.quote(string)
-
-        return uri
-    else:
-        print(f"Cannot plot 'Trend_{timeFrame}' as it is not a Series or DataFrame.")
+    return savePlot(f'Trend_{timeFrame}', sp500)
 
 #Method to create a price graph
 def priceRatioGraph(timeFrame):
@@ -63,28 +43,7 @@ def priceRatioGraph(timeFrame):
 
     sp500 = sp500.iloc[-timeFrame:]
 
-    ratio = sp500[f'Price_Ratio_{timeFrame}']
-
-    # Check if the column exists and is a Series or DataFrame
-    if isinstance(ratio, (pd.Series, pd.DataFrame)):
-        plt.clf()
-        #plot the price
-        ratio.plot(figsize=(10, 6))
-
-        #set the title
-        plt.title(f'S&P 500 Price Ratio Over {timeFrame}  Days')
-
-        buf = io.BytesIO()
-        plt.savefig(buf, format='png')
-        buf.seek(0)
-
-        string = base64.b64encode(buf.read())
-
-        uri = urllib.parse.quote(string)
-
-        return uri
-    else:
-        print(f"Cannot plot 'Price_Ratio_{timeFrame}' as it is not a Series or DataFrame.")
+    return savePlot(f'Price_Ratio_{timeFrame}', sp500)
 
 
 def priceGraph(timeFrame):
@@ -96,10 +55,17 @@ def priceGraph(timeFrame):
 
     sp500 = sp500.iloc[-timeFrame:]
 
-    if isinstance(sp500['Close'], (pd.Series, pd.DataFrame)):
-        sp500['Close'].plot(figsize=(10, 6))
+    return savePlot('Close', sp500)
 
-        plt.title(f'S&P 500 Price Over {timeFrame} Days')
+def savePlot(column, sp500):
+
+    if isinstance(sp500[column], (pd.Series, pd.DataFrame)):
+        plt.clf()
+        #plot the trend
+        sp500[column].plot(figsize=(10, 6))
+
+        #set the title
+        plt.title(f'S&P 500 {column}')
 
         buf = io.BytesIO()
         plt.savefig(buf, format='png')
@@ -110,10 +76,8 @@ def priceGraph(timeFrame):
         uri = urllib.parse.quote(string)
 
         return uri
-
     else:
-        print(f"Cannot plot 'Close' as it is not a Series or DataFrame.")
-
+        print(f"Cannot plot '{column}' as it is not a Series or DataFrame.")
 
 def getGraph(timeFrame, type):
     if(type == 'price_ratio'):
