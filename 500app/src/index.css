@@ -1,242 +1,311 @@
-        * {
-            margin: 0;
-            padding: 0;
-        }
+* {
+    margin: 0;
+    padding: 0;
+}
 
-        .sticky-top {
-            position: sticky;
-            top: 0;
-            z-index: 1020;
-            display: flex; /* Make the direct children layout in a row */
-            width: 100%;
-            min-height: 100px;
-            background: linear-gradient(to bottom, darkgray, ghostwhite);
-            background-size: 300% 100%; /* Make the background larger than the element */
-            align-items: center;
-        }
+.sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    display: flex; /* Make the direct children layout in a row */
+    width: 100%;
+    min-height: 100px;
+    background: linear-gradient(to bottom, darkgray, ghostwhite);
+    background-size: 300% 100%; /* Make the background larger than the element */
+    align-items: center;
+}
 
-        .sticky-top > * {
-            margin-right: 20px;
-        }
+.sticky-top > * {
+    margin-right: 20px;
+}
 
-        .logo-header {
-            border: 2px solid black;
-            border-radius: 50%;
-            height: 70px;
-            width: 70px;
-            margin: 15px;
-        }
+.logo-header {
+    border: 2px solid black;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    margin: 15px;
+}
 
-        .main-body {
-            background-color: ghostwhite;
-            overflow-y: scroll;
-        }
+.main-body {
+    background-color: ghostwhite;
+    overflow-y: scroll;
+}
 
-        .logo-header:hover {
-            transform: scale(1.2);
-            transition: 0.8s;
-        }
+.logo-header:hover {
+    transform: scale(1.2);
+    transition: 0.8s;
+}
 
-        .title {
-            padding-top: 10%;
-            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif
-        }
+.title {
+    padding-top: 10%;
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif
+}
 
-        .title-add {
-            font-family: Signifier, 'Times New Roman', Times, serif;
-            font-size: 10px;
-            padding-top: 10px;
-        }
+.title-add {
+    font-family: Signifier, 'Times New Roman', Times, serif;
+    font-size: 10px;
+    padding-top: 10px;
+}
 
-        .title:hover {
-            cursor: pointer;
-        }
+.title:hover {
+    cursor: pointer;
+}
 
-        .function {
-            width: 100%;
-            display: flex;
-            position: relative;
-            padding-top:3.5%;
-            margin-top: 3.5%;
-            margin-bottom: 3.5%;
-            padding-bottom: 3.5%;
-            transform: translateY(100px);
-            align-content: center;
-            border: 2px solid darkgray;
-            background-color: aliceblue;
-        }
+.function {
+    width: 100%;
+    display: flex;
+    position: relative;
+    padding-top: 3.5%;
+    margin-top: 3.5%;
+    margin-bottom: 3.5%;
+    padding-bottom: 3.5%;
+    transform: translateY(100px);
+    align-content: center;
+    border: 2px solid darkgray;
+    background-color: aliceblue;
+}
 
-        a {
-            text-decoration: none; /* Removes underline */
-            color: inherit; /* Inherits color from parent element */
-            background-color: transparent; /* Makes background transparent */
-            border: none; /* Removes border */
-        }
-
-
-        .function-description {
-            display: block;
-            padding-left: 20px;
-            padding-right: 30px;
-            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif
-        }
+a {
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Inherits color from parent element */
+    background-color: transparent; /* Makes background transparent */
+    border: none; /* Removes border */
+}
 
 
-        .desc-top {
-            padding-bottom: 10px;
-            font-family: Signifier, 'Times New Roman', Times, serif;
-            font-size: 45px;
-        }
+.function-description {
+    display: block;
+    padding-left: 20px;
+    padding-right: 30px;
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif
+}
 
-        .desc-bottom {
-            font-size: 15px;
-            padding-top: 10px;
-        }
 
-        .desc-brief {
-            display: flex;
-            align-items: center;
-            position: relative;
-            width: 100%;
-            padding-top: 7%;
-            padding-bottom: 7%;
-            border: 2px solid darkgray;
-            transform: translateY(130%);
-            background-color: aliceblue;
-        }
+.desc-top {
+    padding-bottom: 10px;
+    font-family: Signifier, 'Times New Roman', Times, serif;
+    font-size: 45px;
+}
 
-        .function-image {
-            height: 15%;
-            width:22.5%;
-            padding-left: 5%;
-        }
+.desc-bottom {
+    font-size: 15px;
+    padding-top: 10px;
+}
 
-        .credits {
-            font-family: Signifier, 'Times New Roman', Times, serif;
-            margin-top: 20%;
-            margin-bottom: 2.5%;
-        }
+.desc-brief {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding-top: 7%;
+    padding-bottom: 7%;
+    border: 2px solid darkgray;
+    transform: translateY(130%);
+    background-color: aliceblue;
+}
 
-        .brief-header {
-            padding-left:5%;
-            font-family: Signifier, 'Times New Roman', Times, serif;
-            font-size: 15px;
-            align-content: center;
-        }
+.function-image {
+    height: 15%;
+    width: 22.5%;
+    padding-left: 5%;
+}
 
-        .brief-content {
-            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-            font-size: 17px;
-            padding-left: 5%;
-            width: 75%; /* Limit the width to 80% of the parent container */
-            margin: 0 auto; /* Center the text within the parent container */
-            overflow: clip;
-        }
+.credits {
+    font-family: Signifier, 'Times New Roman', Times, serif;
+    margin-top: 20%;
+    margin-bottom: 2.5%;
+}
 
-        .bio-container {
-            transform: translateY(4%);
-            background-color: aliceblue;
-            border: 2px solid darkgray;
-            padding-top: 5%;
-            padding-bottom: 5%;
-        }
+.brief-header {
+    padding-left: 5%;
+    font-family: Signifier, 'Times New Roman', Times, serif;
+    font-size: 15px;
+    align-content: center;
+}
 
-        .bio-content {
-            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-            font-size: 23px;
-            justify-content: center;
-            padding-left: 10%;
-            width: 75%; /* Limit the width to 80% of the parent container */
-            margin-top:3%;
-            overflow: clip;
-        }
+.brief-content {
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    padding-left: 5%;
+    width: 75%; /* Limit the width to 80% of the parent container */
+    margin: 0 auto; /* Center the text within the parent container */
+    overflow: clip;
+}
 
-        .p-bio{
-            padding-top:1%;
-            line-height: 1.25;
-        }
+.bio-container {
+    transform: translateY(4%);
+    background-color: aliceblue;
+    border: 2px solid darkgray;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
 
-        .h3-bio{
-            padding-top:3%;
-            padding-bottom:2%;
-        }
+.bio-content {
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 23px;
+    justify-content: center;
+    padding-left: 10%;
+    width: 75%; /* Limit the width to 80% of the parent container */
+    margin-top: 3%;
+    overflow: clip;
+}
 
-        .li-bio{
-            padding-top:0.75%;
-            line-height: 1.8;
-        }
+.p-bio {
+    padding-top: 1%;
+    line-height: 1.25;
+}
 
-        .bio-pitch {
-            width: 75%;
-            overflow: clip;
-            margin-left:10%;
-            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-            margin-top:20%;
-            line-height: 1.25;
-        }
+.h3-bio {
+    padding-top: 3%;
+    padding-bottom: 2%;
+}
 
-        .h1-bio{
-            font-size: 90px;
-            margin-bottom: 2%;
-            font-family: Signifier, 'Times New Roman', Times, serif;
-        }
+.li-bio {
+    padding-top: 0.75%;
+    line-height: 1.8;
+}
 
-        .menu-button {
-            background: none;
-            color: inherit;
-            border: none;
-            padding: 0;
-            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-            padding-left: 3.3%;
-            font-size:inherit;
-            cursor: pointer;
-            outline: none;
-        }
+.bio-pitch {
+    width: 75%;
+    overflow: clip;
+    margin-left: 10%;
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    margin-top: 20%;
+    line-height: 1.25;
+}
 
-        .sticky-option {
-            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-            padding-left: 3.3%;
-        }
+.h1-bio {
+    font-size: 90px;
+    margin-bottom: 2%;
+    font-family: Signifier, 'Times New Roman', Times, serif;
+}
 
-        .daily-pred-container {
-            display:flex;
-            background-color: aliceblue;
-            border: 2px solid darkgray;
-            padding-top: 5%;
-            padding-bottom: 5%;
-            padding-left: 10%;
-            position: relative;
-            margin-top: 1%;
-        }
+.menu-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    padding-left: 3.3%;
+    font-size: inherit;
+    cursor: pointer;
+    outline: none;
+}
 
-        .pred-button {
-            background: ghostwhite;
-            color: inherit;
-            border: 2px solid darkgray;
-            font-size: 27px;
-            padding: 0;
-            font-family: Signifier, 'Times New Roman', Times, serif;
-            cursor: pointer;
-            outline: none;
-        }
+.sticky-option {
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    padding-left: 3.3%;
+}
 
-        .pred {
-            margin-top: 0.8%;
-            margin-left:10%;
-            font-size: 20px;
-            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-        }
+.daily-pred-container {
+    display: flex;
+    background-color: aliceblue;
+    border: 2px solid darkgray;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 10%;
+    position: relative;
+    margin-top: 1%;
+}
 
-        .pred-explain {
-            margin-top: 1%;
-            margin-left:10%;
-            font-size: 20px;
-            font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-        }
+.select-analyze {
+}
 
-        .pred-header {
-            font-family: Signifier, 'Times New Roman', Times, serif;
-            font-size: 30px;
-            margin-left: 10%;
-            padding-top: 15%;
-        }
+.select-analyze::-ms-expand {
+    display: none;
+}
+
+.select-analyze::after {
+    content: '▼';
+    position: absolute;
+    right: 10px;
+}
+
+
+.pred {
+    margin-top: 0.8%;
+    margin-left: 10%;
+    font-size: 20px;
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+.pred-explain {
+    margin-top: 1%;
+    margin-left: 10%;
+    font-size: 20px;
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+.pred-header {
+    font-family: Signifier, 'Times New Roman', Times, serif;
+    font-size: 30px;
+    margin-left: 10%;
+    padding-top: 15%;
+}
+
+.analyze-select-header {
+    font-family: Signifier, 'Times New Roman', Times, serif;
+    font-size: 30px;
+    margin-left: 10%;
+}
+
+.graph-container {
+    display: inline-block;
+    width: 100%;
+    background-color: aliceblue;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 10%;
+    margin-right:3%;
+    position: relative;
+}
+
+.analyze-main-menu {
+    display: flex;
+    font-family: Signifier, 'Times New Roman', Times, serif;
+    font-size: 45px;
+    margin-left: 10%;
+    position: relative;
+    margin-top: 3%;
+}
+
+.analyze-select {
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 30px;
+    margin-right:3%;
+    height:20px;
+}
+
+.pred-rounded-button {
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 100%;
+    margin: 4px 2px;
+    cursor: pointer;
+    height:100%;
+    background-color:white;
+}
+
+.analyze-rounded-button {
+    border: none;
+    border-radius: 6px;
+    padding: 30px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 100%;
+    margin: 4px 2px;
+    cursor: pointer;
+    height:100%;
+    background-color:white;
+}
+
+.analyze-input {
+    margin-right:3%;
+}
+
