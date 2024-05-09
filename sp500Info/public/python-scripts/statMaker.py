@@ -47,15 +47,21 @@ def priceRatioGraph(timeFrame):
 
 
 def priceGraph(timeFrame):
-    plt.clf()
-
     sp500 = dataInteract.getDailyStock()
-
-    sp500 = pd.DataFrame(sp500)
 
     sp500 = sp500.iloc[-timeFrame:]
 
     return savePlot('Close', sp500)
+
+def closeOverOpenGraph(timeFrame):
+
+    sp500 = dataInteract.getDailyStock()
+
+    sp500 = sp500.iloc[-timeFrame:]
+
+    sp500[f'Close_Over_Open_{timeFrame}'] = sp500['Close'] / sp500['Open']
+
+    return savePlot(f'Close_Over_Open_{timeFrame}', sp500)
 
 def savePlot(column, sp500):
 
@@ -79,10 +85,40 @@ def savePlot(column, sp500):
     else:
         print(f"Cannot plot '{column}' as it is not a Series or DataFrame.")
 
+def getMean(timeFrame):
+    sp500 = dataInteract.getDailyStock()
+    sp500['Close'] = pd.to_numeric(sp500['Close'], errors='coerce')
+    sp500 = sp500.iloc[-timeFrame:]
+    return sp500['Close'].mean()
+
+def getMedian(timeFrame):
+    sp500 = dataInteract.getDailyStock()
+    sp500['Close'] = pd.to_numeric(sp500['Close'], errors='coerce')
+    sp500 = sp500.iloc[-timeFrame:]
+    return sp500['Close'].median()
+
+def getStdDev(timeFrame):
+    sp500 = dataInteract.getDailyStock()
+    sp500['Close'] = pd.to_numeric(sp500['Close'], errors='coerce')
+    sp500 = sp500.iloc[-timeFrame:]
+    return sp500['Close'].std()
+
+def getStat(timeFrame, type):
+    timeFrame = int(timeFrame)
+    if(type == 'mean'):
+        return getMean(timeFrame)
+    elif(type == 'median'):
+        return getMedian(timeFrame)
+    elif(type == 'std'):
+        return getStdDev(timeFrame)
+
 def getGraph(timeFrame, type):
+    timeFrame = int(timeFrame)
     if(type == 'price_ratio'):
         return priceRatioGraph(timeFrame)
     elif(type == 'trend'):
         return trendGraph(timeFrame)
     elif(type == 'price'):
         return priceGraph(timeFrame)
+    elif(type == 'close_over_open'):
+        return closeOverOpenGraph(timeFrame)

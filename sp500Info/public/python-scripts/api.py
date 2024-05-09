@@ -17,5 +17,12 @@ def get_price_graph():
     graph_type = request.args.get('type', default='price', type=str)
     return jsonify(statMaker.getGraph(time_frame, graph_type))
 
+@app.route('/api/daily-stats', methods=['GET'])
+def get_stats():
+    time_frame = request.args.get('timeFrame', default=5, type=int)
+    stat_type = request.args.get('type', default='mean', type=str)
+    stat = statMaker.getStat(time_frame, stat_type)
+    return jsonify(stat.tolist())
+
 if __name__ == '__main__':
     app.run(debug=True)

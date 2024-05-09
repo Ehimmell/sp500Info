@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './index.css';
-import {getDailyPrediction, getTrendGraph} from './api.js';
+import {getDailyPrediction, getTrendGraph, getStat} from './api.js';
 
 export function StickyHeader({onButtonClick}) {
     const [clickedButton, setClickedButton] = useState(null)
@@ -257,7 +257,7 @@ export function TodayPrediction() {
         <div>
             <h1 className="pred-header">Today's Stock Prediction</h1>
             <div className="daily-pred-container">
-                <button className="pred-button" onClick={handleClick}>Get Today's Prediction</button>
+                <button className="pred-rounded-button" onClick={handleClick}>Get Today's Prediction</button>
                 <p className="pred">{prediction}</p>
                 <p className="pred-explain">{predExplaination()}</p>
             </div>
@@ -269,6 +269,8 @@ export function AnalyzeExplain() {
     const [analyzeMode, setAnalyzeMode] = useState('graph');
     const [graphSource, setGraphSource] = useState(null);
     const [graphType, setGraphType] = useState('price');
+    const [statType, setStatType] = useState('mean');
+    const [statData, setStatData] = useState(null);
 
     const handleSelect = (e) => {
         setAnalyzeMode(e.target.value);
@@ -278,34 +280,64 @@ export function AnalyzeExplain() {
         setGraphType(e.target.value)
     }
 
+    const handleStatTypeSelect = (e) => {
+        setStatType(e.target.value);
+    }
+
+
     const [timeFrame, setTimeFrame] = useState(5);
+    const [statFrame, setStatFrame] = useState(5);
+
+    const [apiTrigger, setApiTrigger] = useState(false);
 
     const handleTimeFrameChange = (e) => {
         setTimeFrame(e.target.value);
     }
 
-    useEffect(() => {
-    const src = async () => {
-        try {
-            const data = await getTrendGraph(timeFrame, graphType);
-            setGraphSource(`data:image/png;base64,${data}`);
-        } catch (error) {
-            console.error('Error fetching graph data:', error);
-        }
+    const handleStatFrameChange = (e) => {
+        setStatFrame(e.target.value);
     }
-    src();
-}, [timeFrame, graphType]);
+
+    useEffect(() => {
+        if(analyzeMode === 'graph') {
+            const src = async () => {
+                try {
+                    const data = await getTrendGraph(timeFrame, graphType);
+                    setGraphSource(`data:image/png;base64,${data}`);
+                } catch (error) {
+                    console.error('Error fetching graph data:', error);
+                }
+            }
+            src();
+        }
+}, [apiTrigger]);
+
+    useEffect(() => {
+        if(analyzeMode === 'stat') {
+            const statSrc = async () => {
+                try {
+                    const data = await getStat(statFrame, statType);
+                    setStatData(data)
+                } catch (error) {
+                    console.error('Error fetching statistics:' + error);
+                }
+            }
+
+            statSrc();
+        }
+    }, [apiTrigger]);
 
     const comp = () => {
         if (analyzeMode === 'graph') {
             return (
                 <div>
                     <div className="graph-container">
-                        <input value={timeFrame} onChange={handleTimeFrameChange} type="number"/>
+                        <input className="analyze-input" value={timeFrame} onChange={handleTimeFrameChange} type="number"/>
                         <select className={"select-analyze"} onChange={handleTypeSelect}>
                             <option value={'price'}>Price Graph</option>
                             <option value={'price_ratio'}>Price Ratio Graph</option>
                             <option value={'trend'}>Trend Graph</option>
+                            <option value={"close_over_open"}>Close Over Open Graph</option>
                         </select>
                     </div>
                     <div className={"graph-container"}>
@@ -314,7 +346,21 @@ export function AnalyzeExplain() {
                 </div>
             )
         } else {
-            return (<p>Stats</p>);
+            return (
+                <div>
+                    <div className={"graph-container"}>
+                        <input className = "analyze-input" value={statFrame} onChange={handleStatFrameChange} type="number"/>
+                        <select className = {"select-analyze"} onChange={handleStatTypeSelect}>
+                            <option value={'mean'}>Mean</option>
+                            <option value={'median'}>Median</option>
+                            <option value={'std'}>Standard Deviation</option>
+                        </select>
+                    </div>
+                    <div className = "graph-container">
+                        <p>{statData}</p>
+                    </div>
+                </div>
+            );
         }
     }
 
@@ -338,10 +384,13 @@ export function AnalyzeExplain() {
             </div>
             <div className="bio-container">
                 <h3 className="analyze-select-header">Select Analyze Mode</h3>
-                <select className="select-analyze" onChange={handleSelect}>
-                    <option value="graph">Graph</option>
-                    <option value="stat">Statistics</option>
-                </select>
+                <div className = "analyze-main-menu">
+                    <select className="analyze-select"onChange={handleSelect}>
+                        <option value="graph">Graph</option>
+                        <option value="stat">Statistics</option>
+                    </select>
+                    <button className = "analyze-rounded-buttonrounded-button" onClick={() => setApiTrigger(!apiTrigger)}>Get Data</button>
+                </div>
                 <div>{comp()}</div>
             </div>
         </div>
