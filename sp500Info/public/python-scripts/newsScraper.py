@@ -36,32 +36,11 @@ def scrapeWSJ():
 
             articles += [headline]
 
-        #get the existing articles
-        with open(constants.HEADLINES_PATH, 'r', encoding='utf-8') as file:
-            reader = csv.reader(file)
-            existing_articles = list(reader)
+        #clean
+        articles = dataPrep.clean(articles)
 
-        #flatten the existing articles
-        existing_articles = [item for sublist in existing_articles for item in sublist]
+        return articles
 
-        #clean the articles by checking if an article that was scraped is already in the existing articles
-        for article in articles:
-            if article not in existing_articles:
-                existing_articles.append(article)
-
-        #write the cleaned articles to the csv file
-        with open(constants.HEADLINES_PATH, 'w', newline='', encoding='utf-8') as file:
-            writer = csv.writer(file)
-            for article in existing_articles:
-                writer.writerow([article])
-            writer.writerow(["    "])
-
-        #write the runtime to the csv file
-        with open(constants.RUNTIMES_PATH, 'a', newline='', encoding='utf-8') as file:
-            writer = csv.writer(file)
-            now = datetime.datetime.now()
-            writer.writerow([now.strftime("%Y-%m-%d %H:%M:%S")])
-            writer.writerow(["size: " + str(len(existing_articles))])
 
 def scrapeCNNBiz():
     #get the response from the wsj
@@ -81,36 +60,10 @@ def scrapeCNNBiz():
             headline = item.get_text()
             articles += [headline]
 
-        #get the existing articles
+        #clean
+        articles = dataPrep.clean(articles)
 
-        with open(constants.HEADLINES_PATH, 'r', encoding='utf-8') as file:
-            reader = csv.reader(file)
-            existing_articles = list(reader)
-
-        #flatten the existing articles
-
-        existing_articles = [item for sublist in existing_articles for item in sublist]
-
-        #clean the articles by checking if an article that was scraped is already in the existing articles
-
-        for article in articles:
-            if article not in existing_articles:
-                existing_articles.append(article)
-
-
-        #write the cleaned articles to the csv file
-        with open(constants.HEADLINES_PATH, 'w', newline='', encoding='utf-8') as file:
-            writer = csv.writer(file)
-            for article in existing_articles:
-                writer.writerow([article])
-            writer.writerow(["    "])
-
-        #write the runtime to the csv file
-        with open(constants.RUNTIMES_PATH, 'a', newline='', encoding='utf-8') as file:
-            writer = csv.writer(file)
-            now = datetime.datetime.now()
-            writer.writerow([now.strftime("%Y-%m-%d %H:%M:%S")])
-            writer.writerow(["size: " + str(len(existing_articles))])
+        return articles
 
 def scrapeYahooFinance():
 
@@ -126,29 +79,14 @@ def scrapeYahooFinance():
             headline = item.get_text()
             articles += [headline]
 
-        with open(constants.HEADLINES_PATH, 'r', encoding='utf-8') as file:
-            reader = csv.reader(file)
-            existing_articles = list(reader)
+        articles = dataPrep.clean(articles)
 
-        existing_articles = [item for sublist in existing_articles for item in sublist]
-
-        for article in articles:
-            if article not in existing_articles:
-                existing_articles.append(article)
-
-        with open(constants.HEADLINES_PATH, 'w', newline='', encoding='utf-8') as file:
-            writer = csv.writer(file)
-            for article in existing_articles:
-                writer.writerow([article])
-            writer.writerow(["    "])
-
-        with open(constants.RUNTIMES_PATH, 'a', newline='', encoding='utf-8') as file:
-            writer = csv.writer(file)
-            now = datetime.datetime.now()
-            writer.writerow([now.strftime("%Y-%m-%d %H:%M:%S")])
-            writer.writerow(["size: " + str(len(existing_articles))])
+        return articles
 
 def scrapeAll():
-    scrapeWSJ()
-    scrapeCNNBiz()
-    scrapeYahooFinance()
+
+    wsj = scrapeWSJ()
+    cnn = scrapeCNNBiz()
+    yahoo = scrapeYahooFinance()
+
+    return wsj + cnn + yahoo
