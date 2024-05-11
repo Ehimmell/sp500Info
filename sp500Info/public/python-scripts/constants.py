@@ -16,7 +16,7 @@ HEADLINES_PATH = "/Users/himme/Downloads/git/stock/sp500Info/public/headLines.cs
 RUNTIMES_PATH = "/Users/himme/Downloads/git/stock/sp500Info/public/runtimes.csv"
 
 #Threshold for a successful"buy" day
-BUY_THRESH = 0.57
+BUY_THRESH = 0.55
 
 #Horizons for rolling means and trend sums
 ROLLING_HORIZONS = [2,5,60,250,1000]

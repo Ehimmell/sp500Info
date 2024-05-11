@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import pickle as p
 import newsScraper as ns
+import constants
 
 model = p.load(open('../newsModel4.0.pkl', 'rb'))
 
@@ -30,8 +31,12 @@ preds_proba = model.predict_proba(news)
 
 sum = 0
 
-for pred, proba in zip(preds, preds_proba):
-    sum += pred * max(proba)
+news = ns.scrapeAll()
+
+for pred, proba, headline in zip(preds, preds_proba, news):
+    if(max(proba) < 0.5): continue
+    print(pred, headline, max(proba))
+    sum += pred * (pow(1/max(proba), 2))
 
 print(sum)
 

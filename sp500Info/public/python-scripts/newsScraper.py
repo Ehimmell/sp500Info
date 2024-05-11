@@ -37,7 +37,6 @@ def scrapeWSJ():
             articles += [headline]
 
         #clean
-        articles = dataPrep.clean(articles)
 
         return articles
 
@@ -60,8 +59,6 @@ def scrapeCNNBiz():
             headline = item.get_text()
             articles += [headline]
 
-        #clean
-        articles = dataPrep.clean(articles)
 
         return articles
 
@@ -78,8 +75,6 @@ def scrapeYahooFinance():
         for item in clean.select(f'h3.{constants.CLAMP}'):
             headline = item.get_text()
             articles += [headline]
-
-        articles = dataPrep.clean(articles)
 
         return articles
 
