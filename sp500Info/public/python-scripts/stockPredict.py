@@ -4,6 +4,9 @@
 import pickle as p
 import constants
 import numpy as np
+import dataPrep as dp
+import yfinance as yf
+from tensorflow.keras.models import load_model
 
 #Method to predict the stock price of the S&P 500 index for the next day
 def predict(sp500):
@@ -22,16 +25,28 @@ def predict(sp500):
     return tomorrowPred
 
 def pricePredict(sp500):
-    with open('../stockLSTM.pkl', 'rb') as model:
-        model = p.load(model)
 
-    with open('../scaler.pkl', 'rb') as scaler:
+    model = load_model('../stockLSTM.keras')
+
+    with open('../vectorizers/scaler.pkl', 'rb') as scaler:
         scaler = p.load(scaler)
+
+    print(model.summary())
 
     sp500 = sp500.reset_index()['Close']
 
-    sp500 = sp500.iloc[-1000:]
-
     sp500 = scaler.transform(np.array(sp500).reshape(-1, 1))
 
+    X = []
+    for i in range(len(sp500) - 99):
+        a = sp500[i:(i + 100), 0]
+        X.append(a)
+
+    X = np.array(X)
+
+    preds = model.predict(X)
+
+    preds = scaler.inverse_transform(preds)
+
+    return preds[-1]
 

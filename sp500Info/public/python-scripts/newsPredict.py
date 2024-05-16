@@ -4,7 +4,7 @@ import pickle as p
 import newsScraper as ns
 import constants
 
-model = p.load(open('../newsModel4.0.pkl', 'rb'))
+model = p.load(open('../models/newsModel4.0.pkl', 'rb'))
 
 tf = p.load(open('../vectorizers/newsTFVectorizer4.0.pkl', 'rb'))
 sia = p.load(open('../vectorizers/newsSIA4.0.pkl', 'rb'))

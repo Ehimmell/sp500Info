@@ -5,7 +5,7 @@ STOCKPRED_BUY = 1
 STOCKPRED_SELL = 0
 
 # Path to the stock model
-STOCK_MODEL_PATH = '/Users/himme/Downloads/git/stock/sp500Info/public/updatedSPModel.pkl'
+STOCK_MODEL_PATH = '/stock/sp500Info/public/models/updatedSPModel.pkl'
 
 # Table names
 SP500_TABLE = "sp500_table"
