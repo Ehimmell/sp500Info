@@ -36,7 +36,7 @@ news = ns.scrapeAll()
 for pred, proba, headline in zip(preds, preds_proba, news):
     if(max(proba) < 0.5): continue
     print(pred, headline, max(proba))
-    sum += pred * (pow(1/max(proba), 2))
+    sum += pred * pow(max(proba), 2)
 
 print(sum)
 
