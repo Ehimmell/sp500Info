@@ -5,11 +5,12 @@ STOCKPRED_BUY = 1
 STOCKPRED_SELL = 0
 
 # Path to the stock model
-STOCK_MODEL_PATH = '/stock/sp500Info/public/models/updatedSPModel.pkl'
+STOCK_MODEL_PATH = '../models/updatedSPModel.pkl'
 
 # Table names
 SP500_TABLE = "sp500_table"
 STOCKPRED_TABLE = "stock_pred_table"
+STOCKPRICE_TABLE = "stock_price_table"
 
 # Path to the csv files for news scraping data storage
 HEADLINES_PATH = "/Users/himme/Downloads/git/stock/sp500Info/public/headLines.csv"

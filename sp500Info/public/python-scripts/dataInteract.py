@@ -97,3 +97,44 @@ def getDailyPrediction():
 
     #return the prediction's buy proba
     return prediction['Buy'].values[0]
+
+def sendPredPrice():
+
+    engine = connectDB()
+
+    sp500 = getDailyStock()
+
+    sp500 = sp500.iloc[-2000:].copy()
+
+    price, prediction = stockPredict.pricePredict(sp500)
+
+    price = price.item()
+
+    toInsert = [price, prediction, pd.Timestamp.today().normalize().timestamp()]
+
+    toInsert = pd.DataFrame([toInsert], columns=['Price', 'Prediction', 'Date'])
+
+    toInsert.to_sql(constants.STOCKPRICE_TABLE, engine, if_exists='append', index=False)
+
+    engine.dispose()
+
+
+def getPredPrice():
+
+    today = pd.Timestamp.today().normalize().timestamp()
+
+    engine = connectDB()
+
+    price = pd.read_sql_query(f"SELECT * FROM {constants.STOCKPRICE_TABLE} WHERE \"Date\" = {today}", engine)
+
+    engine.dispose()
+
+    return price['Price'].values[0], price['Prediction'].values[0]
+
+price, prediction = getPredPrice()
+sendDailyPrediction()
+predictionOther = getDailyPrediction()
+
+print(prediction)
+print(predictionOther)
+

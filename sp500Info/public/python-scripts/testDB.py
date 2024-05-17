@@ -43,6 +43,16 @@ class TestDBConnection(unittest.TestCase):
         except OperationalError:
             self.fail("Could not establish a connection to the database")
 
+
+    #test the existence of the stockprice table
+    def test_stockprice_table(self):
+        try:
+            connection = self.engine.connect()
+            result = pd.read_sql_query(f"SELECT * FROM {constants.STOCKPRICE_TABLE}", connection)
+            self.assertTrue(result is not None)
+        except OperationalError:
+            self.fail("Could not establish a connection to the database")
+
 #run the tests
 if __name__ == '__main__':
     unittest.main()
