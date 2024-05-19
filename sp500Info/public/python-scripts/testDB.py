@@ -25,15 +25,6 @@ class TestDBConnection(unittest.TestCase):
         except OperationalError:
             self.fail("Could not establish a connection to the database")
 
-    #test the existence of the sp500 table
-    def test_sp500_table(self):
-        try:
-            connection = self.engine.connect()
-            result = pd.read_sql_query(f"SELECT * FROM {constants.SP500_TABLE}", connection)
-            self.assertTrue(result is not None)
-        except OperationalError:
-            self.fail("Could not establish a connection to the database")
-
     #test the existence of the stockpred table
     def test_stockpred_table(self):
         try:

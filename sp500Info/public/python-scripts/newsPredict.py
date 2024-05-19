@@ -4,39 +4,42 @@ import pickle as p
 import newsScraper as ns
 import constants
 
-model = p.load(open('../models/newsModel4.0.pkl', 'rb'))
 
-tf = p.load(open('../vectorizers/newsTFVectorizer4.0.pkl', 'rb'))
-sia = p.load(open('../vectorizers/newsSIA4.0.pkl', 'rb'))
-good_vc = p.load(open('../vectorizers/newsGoodVectorizer4.0.pkl', 'rb'))
-bad_vc = p.load(open('../vectorizers/newsBadVectorizer4.0.pkl', 'rb'))
-neutral_vc = p.load(open('../vectorizers/newsNeutralVectorizer4.0.pkl', 'rb'))
+def getNewsPred():
 
-news = ns.scrapeAll()
 
-news = pd.DataFrame(news, columns=['Headlines'])
+    model = p.load(open('../models/newsModel4.0.pkl', 'rb'))
 
-news_good = good_vc.transform(news['Headlines'])
-news_bad = bad_vc.transform(news['Headlines'])
-news_neutral = neutral_vc.transform(news['Headlines'])
+    tf = p.load(open('../vectorizers/newsTFVectorizer4.0.pkl', 'rb'))
+    sia = p.load(open('../vectorizers/newsSIA4.0.pkl', 'rb'))
+    good_vc = p.load(open('../vectorizers/newsGoodVectorizer4.0.pkl', 'rb'))
+    bad_vc = p.load(open('../vectorizers/newsBadVectorizer4.0.pkl', 'rb'))
+    neutral_vc = p.load(open('../vectorizers/newsNeutralVectorizer4.0.pkl', 'rb'))
 
-news_tf = tf.transform(news['Headlines'])
+    news = ns.scrapeAll()
 
-news_sia = news['Headlines'].apply(lambda x: pd.Series(sia.polarity_scores(x)))
+    news = pd.DataFrame(news, columns=['Headlines'])
 
-news = np.hstack([news_sia.apply(pd.Series).values, news_good.toarray(), news_bad.toarray(), news_neutral.toarray(), news_tf.toarray()])
+    news_good = good_vc.transform(news['Headlines'])
+    news_bad = bad_vc.transform(news['Headlines'])
+    news_neutral = neutral_vc.transform(news['Headlines'])
 
-preds = model.predict(news)
-preds_proba = model.predict_proba(news)
+    news_tf = tf.transform(news['Headlines'])
 
-sum = 0
+    news_sia = news['Headlines'].apply(lambda x: pd.Series(sia.polarity_scores(x)))
 
-news = ns.scrapeAll()
+    news = np.hstack([news_sia.apply(pd.Series).values, news_good.toarray(), news_bad.toarray(), news_neutral.toarray(),
+                      news_tf.toarray()])
 
-for pred, proba, headline in zip(preds, preds_proba, news):
-    if(max(proba) < 0.5): continue
-    print(pred, headline, max(proba))
-    sum += pred * pow(max(proba), 2)
+    preds = model.predict(news)
+    preds_proba = model.predict_proba(news)
 
-print(sum)
+    sum = 0
 
+    news = ns.scrapeAll()
+
+    for pred, proba, headline in zip(preds, preds_proba, news):
+        if (max(proba) < 0.5): continue
+        sum += pred * pow(max(proba), 2)
+
+    return sum

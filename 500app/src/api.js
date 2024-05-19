@@ -44,3 +44,19 @@ export async function getStat(timeFrame, type) {
         return error;
     }
 }
+
+export async function getDailyPrice() {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/api/daily-price', {mode: 'cors'});
+        if (!response.ok) {
+            throw new Error('Failed to fetch daily price');
+        }
+
+        const data = await response.json();
+        return data;
+    }
+    catch (error) {
+        console.error('Error:', error);
+        return error;
+    }
+}

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './index.css';
-import {getDailyPrediction, getTrendGraph, getStat} from './api.js';
+import {getDailyPrediction, getTrendGraph, getStat, getDailyPrice} from './api.js';
 
 export function StickyHeader({onButtonClick}) {
     const [clickedButton, setClickedButton] = useState(null)
@@ -233,9 +233,12 @@ export function PredictBio() {
 export function TodayPrediction() {
 
     const [prediction, setPrediction] = useState('');
+    const [price, setPrice] = useState('');
     const handleClick = async () => {
         const prediction = await getDailyPrediction();
+        const price = await getDailyPrice();
         setPrediction(prediction);
+        setPrice(price.substring(0, price.indexOf('.') + 3));
     }
 
     let predNum = parseFloat(prediction);
@@ -258,7 +261,7 @@ export function TodayPrediction() {
             <h1 className="pred-header">Today's Stock Prediction</h1>
             <div className="daily-pred-container">
                 <button className="pred-rounded-button" onClick={handleClick}>Get Today's Prediction</button>
-                <p className="pred">{prediction}</p>
+                <p className="pred">{price}</p>
                 <p className="pred-explain">{predExplaination()}</p>
             </div>
         </div>

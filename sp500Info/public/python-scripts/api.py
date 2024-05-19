@@ -24,5 +24,16 @@ def get_stats():
     stat = statMaker.getStat(time_frame, stat_type)
     return jsonify(stat.tolist())
 
+@app.route('/api/daily-price', methods=['GET'])
+def get_price():
+    price, pred = di.getPredPrice()
+    return jsonify(price)
+
+@app.route('/api/daily-news', methods=['GET'])
+def get_news():
+    price = di.getPredPrice()
+    return jsonify(price)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

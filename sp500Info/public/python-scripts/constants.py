@@ -11,6 +11,7 @@ STOCK_MODEL_PATH = '../models/updatedSPModel.pkl'
 SP500_TABLE = "sp500_table"
 STOCKPRED_TABLE = "stock_pred_table"
 STOCKPRICE_TABLE = "stock_price_table"
+NEWS_TABLE = "news_table"
 
 # Path to the csv files for news scraping data storage
 HEADLINES_PATH = "/Users/himme/Downloads/git/stock/sp500Info/public/headLines.csv"
