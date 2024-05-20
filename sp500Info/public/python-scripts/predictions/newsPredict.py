@@ -8,13 +8,13 @@ import constants
 def getNewsPred():
 
 
-    model = p.load(open('../models/newsModel4.0.pkl', 'rb'))
+    model = p.load(open('../../models/newsModel4.0.pkl', 'rb'))
 
-    tf = p.load(open('../vectorizers/newsTFVectorizer4.0.pkl', 'rb'))
-    sia = p.load(open('../vectorizers/newsSIA4.0.pkl', 'rb'))
-    good_vc = p.load(open('../vectorizers/newsGoodVectorizer4.0.pkl', 'rb'))
-    bad_vc = p.load(open('../vectorizers/newsBadVectorizer4.0.pkl', 'rb'))
-    neutral_vc = p.load(open('../vectorizers/newsNeutralVectorizer4.0.pkl', 'rb'))
+    tf = p.load(open('../../vectorizers/newsTFVectorizer4.0.pkl', 'rb'))
+    sia = p.load(open('../../vectorizers/newsSIA4.0.pkl', 'rb'))
+    good_vc = p.load(open('../../vectorizers/newsGoodVectorizer4.0.pkl', 'rb'))
+    bad_vc = p.load(open('../../vectorizers/newsBadVectorizer4.0.pkl', 'rb'))
+    neutral_vc = p.load(open('../../vectorizers/newsNeutralVectorizer4.0.pkl', 'rb'))
 
     news = ns.scrapeAll()
 

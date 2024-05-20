@@ -1,11 +1,11 @@
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App.js';
-import About from './About.js';
-import Predict from './Predict.js';
-import {StickyHeader} from './commonComponents.js';
+import App from './pages/Main.js';
+import About from './pages/About.js';
+import Predict from './pages/Predict.js';
+import {StickyHeader} from './components/commonComponents.js';
 import React, { useState } from 'react';
-import Analyze from "./Analyze.js";
+import Analyze from "./pages/Analyze.js";
 
 function Index() {
   const [about, setAbout] = useState(false);

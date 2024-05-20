@@ -1,6 +1,6 @@
-import {Bio, Pitch} from "./commonComponents.js";
+import {Bio, Pitch} from "../components/bioComponents.js";
 import React from "react";
-import './index.css';
+import '../index.css';
 
 function About() {
     return (

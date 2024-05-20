@@ -1,6 +1,6 @@
 
-import './index.css';
-import {Features, Brief} from './commonComponents.js';
+import '../index.css';
+import {Features, Brief} from '../components/mainPageComponents.js';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 

@@ -26,7 +26,7 @@ def pricePredict(sp500):
 
     model = load_model('../models/stockLSTM.keras')
 
-    with open('../vectorizers/scaler.pkl', 'rb') as scaler:
+    with open('../../vectorizers/scaler.pkl', 'rb') as scaler:
         scaler = p.load(scaler)
 
     sp_save = sp500.iloc[-1].copy()

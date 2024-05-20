@@ -1,6 +1,6 @@
-import {AnalyzeExplain} from "./commonComponents.js";
+import {AnalyzeExplain} from "../components/analyzeComponents.js";
 import React from "react";
-import './index.css';
+import '../index.css';
 
 function Analyze() {
     return (
