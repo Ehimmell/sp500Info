@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 import pickle as p
-import newsScraper as ns
-import constants
+from stock.sp500Info.public.python_code.dataload import newsScraper as ns
+
 
 
 def getNewsPred():

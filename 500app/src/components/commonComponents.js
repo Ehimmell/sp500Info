@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import '../index.css';
 import {getDailyPrediction, getTrendGraph, getStat, getDailyPrice} from '../api.js';
+import logo from '../pictures/logo.png';
 
 export function StickyHeader({onButtonClick}) {
     const [clickedButton, setClickedButton] = useState(null)
@@ -11,7 +12,7 @@ export function StickyHeader({onButtonClick}) {
 
     return (
         <div className="sticky-top">
-            <img className="logo-header" src="../pictures/logo.png" alt="500Info Logo" onClick={() => window.scrollTo(0, 0)}/>
+            <img className="logo-header" src={logo} alt="500Info Logo" onClick={() => window.scrollTo(0, 0)}/>
             <div>
                 <button className={`menu-button ${clickedButton === 'home' ? 'clicked' : ''}`}
                         onClick={() => handleClick('home')}>info<strong>S&P</strong>

@@ -1,4 +1,4 @@
-#class to prepare and clean any data for the models
+#class to prepare and clean any dataload for the models
 import nltk
 #Imports
 import pandas as pd
@@ -9,10 +9,10 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 import constants
 
-#Method to prepare the last 20 years of S&P 500 data
+#Method to prepare the last 20 years of S&P 500 dataload
 def prepare500Data():
 
-    #get sp500 data
+    #get sp500 dataload
     sp500 = yf.Ticker(constants.SP500_TICKER)
 
     #get the history of the S&P 500
@@ -38,7 +38,7 @@ def prepare500Data():
         trend_column = f"Trend_{horizon}"
         sp500[trend_column] = sp500.shift(1).rolling(horizon).sum()["Target"]
 
-    #drop the columns that are not predictors and could cause data leakage
+    #drop the columns that are not predictors and could cause dataload leakage
     del sp500["Tomorrow"]
     del sp500["Target"]
 
@@ -54,7 +54,7 @@ def prepare500Data():
     #get the mode price change by grouping by day and taking the mode
     mode_price_change = all_price_changes.groupby('Date')['Price Change'].apply(lambda x: x.mode()[0])
 
-    #merge the mode price change with the sp500 data
+    #merge the mode price change with the sp500 dataload
     sp500 = sp500.merge(mode_price_change.rename('Mode Price Change'), left_index=True, right_index=True, how='left')
 
     #create columns for the rolling mode price change for key stocks
@@ -62,14 +62,14 @@ def prepare500Data():
         trend_key_change = f'Trend_Key_Change_{horizon}'
         sp500[trend_key_change] = sp500['Mode Price Change'].shift(1).rolling(horizon).sum()
 
-    #drop the mode price change column to avoid data leakage
+    #drop the mode price change column to avoid dataload leakage
     del sp500['Mode Price Change']
 
 
     #drop the rows with NaN values
     sp500 = sp500.dropna()
 
-    #return the prepared data
+    #return the prepared dataload
     return sp500
 
 #Method to clean the headlines

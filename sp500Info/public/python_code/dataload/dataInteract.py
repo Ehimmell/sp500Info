@@ -1,4 +1,4 @@
-#Class for inertacting with the database. This class will be used to send and recieve data from the database.
+#Class for inertacting with the database. This class will be used to send and recieve dataload from the database.
 
 #Imports
 import pandas as pd
@@ -26,9 +26,9 @@ def connectDB():
         return None
 
 
-#This method currently sends the last 20 years of stock market data to the DB every time it is called. Because the last 20 years before today is already on there.
-#My initial thought would be to add a parameter for the amount of data to prep, but this would conflict with rolling average computation. Maybe add code
-#to call the data from the db, recomputate the rolling average with today + whatever that returns, and then send that to the db.
+#This method currently sends the last 20 years of stock market dataload to the DB every time it is called. Because the last 20 years before today is already on there.
+#My initial thought would be to add a parameter for the amount of dataload to prep, but this would conflict with rolling average computation. Maybe add code
+#to call the dataload from the db, recomputate the rolling average with today + whatever that returns, and then send that to the db.
 #This method sends the daily prediction to the db
 def sendDailyPrediction():
     try:
@@ -36,10 +36,10 @@ def sendDailyPrediction():
         #get the engine to connect to the db
         engine = connectDB()
 
-        #get the last 20 years of stock data
+        #get the last 20 years of stock dataload
         sp500 = dataPrep.prepare500Data()
 
-        #get the last 2000 days of stock data
+        #get the last 2000 days of stock dataload
         sp500 = sp500.iloc[-2000:].copy()
 
         #get the prediction
@@ -52,7 +52,7 @@ def sendDailyPrediction():
         #convert to a dataframe
         toInsert = pd.DataFrame([toInsert], columns=['Sell', 'Buy', 'Date'])
 
-        #send the data to the db
+        #send the dataload to the db
         toInsert.to_sql(constants.STOCKPRED_TABLE, engine, if_exists='append', index=False)
 
         #close the connection

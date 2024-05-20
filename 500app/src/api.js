@@ -18,7 +18,7 @@ export async function getTrendGraph(timeFrame, type) {
     try {
         const response = await fetch(`http://127.0.0.1:5000/api/daily-stock?timeFrame=${timeFrame}&type=${type}`, {mode: 'cors'});
         if (!response.ok) {
-            throw new Error('Failed to fetch daily stock data');
+            throw new Error('Failed to fetch daily stock dataload');
         }
 
         const data = await response.json();
@@ -50,6 +50,22 @@ export async function getDailyPrice() {
         const response = await fetch('http://127.0.0.1:5000/api/daily-price', {mode: 'cors'});
         if (!response.ok) {
             throw new Error('Failed to fetch daily price');
+        }
+
+        const data = await response.json();
+        return data;
+    }
+    catch (error) {
+        console.error('Error:', error);
+        return error;
+    }
+}
+
+export async function getDailyNews() {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/api/daily-news', {mode: 'cors'});
+        if (!response.ok) {
+            throw new Error('Failed to fetch daily news');
         }
 
         const data = await response.json();

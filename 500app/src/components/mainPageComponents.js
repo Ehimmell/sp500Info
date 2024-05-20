@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import '../index.css';
+import ai from '../pictures/NNPrediction.png';
+import price from '../pictures/stockPrice.png';
+import news from '../pictures/news.png';
 export function Features() {
     return (
         <div>
             <div className={"function"}>
-                <img src="" alt="News" className="function-image"/>
+                <img src={news} alt="News" className="function-image"/>
                 <div className="function-description">
                     <h3 className="desc-top">News Intelligence</h3>
                     <p className="desc-bottom">Assessments of the sway of stock market news</p>
@@ -12,7 +15,7 @@ export function Features() {
                 </div>
             </div>
             <div className={"function"}>
-                <img src="../pictures/NNPrediction.png" alt="Predict" className="function-image"/>
+                <img src={ai} alt="Predict" className="function-image"/>
                 <div className="function-description">
                     <h3 className="desc-top">S&P 500 Predictions</h3>
                     <p className="desc-bottom">Predictive analysis of stock market trends</p>
@@ -20,7 +23,7 @@ export function Features() {
                 </div>
             </div>
             <div className={"function"}>
-                <img src="../pictures/stockPrice.png" alt="Analyze" className={"function-image"}/>
+                <img src={price} alt="Analyze" className={"function-image"}/>
                 <div className="function-description">
                     <h3 className="desc-top">Stock Analysis</h3>
                     <p className="desc-bottom">In-depth analysis of stock market data, including statistics and

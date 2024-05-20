@@ -1,4 +1,4 @@
-#Description: This file contains functions that create graphs for the S&P 500 stock data
+#Description: This file contains functions that create graphs for the S&P 500 stock dataload
 
 #Imports
 import matplotlib.pyplot as plt
@@ -10,13 +10,13 @@ import pandas as pd
 
 #Method to create a trend graph
 def trendGraph(timeFrame):
-    #get the last 20 years of stock data
+    #get the last 20 years of stock dataload
     sp500 = dataInteract.getDailyStock()
 
     sp500["Tomorrow"] = sp500["Close"].shift(-1)
     sp500["Target"] = (sp500["Tomorrow"] > sp500["Close"]).astype(int)
 
-    #get the last x days of stock data
+    #get the last x days of stock dataload
     trend_column = f"Trend_{timeFrame}"
     sp500[trend_column] = sp500.shift(1).rolling(timeFrame).sum()["Target"]
 
@@ -27,13 +27,13 @@ def trendGraph(timeFrame):
 #Method to create a price graph
 def priceRatioGraph(timeFrame):
 
-    #get the last 20 years of stock data
+    #get the last 20 years of stock dataload
     sp500 = dataInteract.getDailyStock()
 
     sp500["Tomorrow"] = sp500["Close"].shift(-1)
     sp500["Target"] = (sp500["Tomorrow"] > sp500["Close"]).astype(int)
 
-    #get the last x days of stock data
+    #get the last x days of stock dataload
     sp500 = sp500.iloc[-timeFrame - 2000:]
 
     rolling_averages = sp500.rolling(timeFrame).mean()
