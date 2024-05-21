@@ -3,11 +3,11 @@
 #Imports
 import pandas as pd
 import os
-import stockPredict
-import constants
+from stock.sp500Info.public.python_code.predictions import stockPredict
+from stock.sp500Info.public.python_code import constants
 from sqlalchemy import create_engine
 import dataPrep
-import newsPredict
+from stock.sp500Info.public.python_code.predictions import newsPredict
 
 
 #Method to connect to the database and return the engine

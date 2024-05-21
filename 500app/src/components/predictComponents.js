@@ -35,6 +35,8 @@ export function TodayPrediction() {
         setNews(news);
     }
 
+
+
     let predNum = parseFloat(prediction);
 
     const predExplaination = () => {

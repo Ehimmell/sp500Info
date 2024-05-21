@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
-import dataInteract as di
+from stock.sp500Info.public.python_code.dataload import dataInteract as di
 from flask_cors import CORS
-import statMaker
+from stock.sp500Info.public.python_code.dataload import statMaker
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*", "methods": ["GET", "POST", "PUT", "DELETE"], "allow_headers": "*"}})

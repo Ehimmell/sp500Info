@@ -2,7 +2,7 @@
 
 #Imports
 import pickle as p
-import constants
+from stock.sp500Info.public.python_code import constants
 import numpy as np
 from tensorflow.keras.models import load_model
 

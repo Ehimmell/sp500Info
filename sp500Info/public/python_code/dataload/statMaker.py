@@ -7,11 +7,12 @@ import io
 import base64
 import urllib.parse
 import pandas as pd
+import dataPrep
 
 #Method to create a trend graph
 def trendGraph(timeFrame):
     #get the last 20 years of stock dataload
-    sp500 = dataInteract.getDailyStock()
+    sp500 = dataPrep.prepare500Data()
 
     sp500["Tomorrow"] = sp500["Close"].shift(-1)
     sp500["Target"] = (sp500["Tomorrow"] > sp500["Close"]).astype(int)
@@ -28,7 +29,7 @@ def trendGraph(timeFrame):
 def priceRatioGraph(timeFrame):
 
     #get the last 20 years of stock dataload
-    sp500 = dataInteract.getDailyStock()
+    sp500 = dataPrep.prepare500Data()
 
     sp500["Tomorrow"] = sp500["Close"].shift(-1)
     sp500["Target"] = (sp500["Tomorrow"] > sp500["Close"]).astype(int)
@@ -47,7 +48,7 @@ def priceRatioGraph(timeFrame):
 
 
 def priceGraph(timeFrame):
-    sp500 = dataInteract.getDailyStock()
+    sp500 = dataPrep.prepare500Data()
 
     sp500 = sp500.iloc[-timeFrame:]
 
@@ -55,7 +56,7 @@ def priceGraph(timeFrame):
 
 def closeOverOpenGraph(timeFrame):
 
-    sp500 = dataInteract.getDailyStock()
+    sp500 = dataPrep.prepare500Data()
 
     sp500 = sp500.iloc[-timeFrame:]
 
@@ -86,19 +87,19 @@ def savePlot(column, sp500):
         print(f"Cannot plot '{column}' as it is not a Series or DataFrame.")
 
 def getMean(timeFrame):
-    sp500 = dataInteract.getDailyStock()
+    sp500 = dataPrep.prepare500Data()
     sp500['Close'] = pd.to_numeric(sp500['Close'], errors='coerce')
     sp500 = sp500.iloc[-timeFrame:]
     return sp500['Close'].mean()
 
 def getMedian(timeFrame):
-    sp500 = dataInteract.getDailyStock()
+    sp500 = dataPrep.prepare500Data()
     sp500['Close'] = pd.to_numeric(sp500['Close'], errors='coerce')
     sp500 = sp500.iloc[-timeFrame:]
     return sp500['Close'].median()
 
 def getStdDev(timeFrame):
-    sp500 = dataInteract.getDailyStock()
+    sp500 = dataPrep.prepare500Data()
     sp500['Close'] = pd.to_numeric(sp500['Close'], errors='coerce')
     sp500 = sp500.iloc[-timeFrame:]
     return sp500['Close'].std()

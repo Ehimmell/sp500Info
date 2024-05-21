@@ -6,7 +6,7 @@ import requests as rq
 import csv
 import datetime
 import dataPrep
-import constants
+from stock.sp500Info.public.python_code import constants
 
 #Method to scrape the wsj for headlines
 def scrapeWSJ():

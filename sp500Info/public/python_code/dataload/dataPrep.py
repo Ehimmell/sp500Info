@@ -7,7 +7,7 @@ import numpy as np
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
-import constants
+from stock.sp500Info.public.python_code import constants
 
 #Method to prepare the last 20 years of S&P 500 dataload
 def prepare500Data():
@@ -17,9 +17,6 @@ def prepare500Data():
 
     #get the history of the S&P 500
     sp500 = sp500.history(period="20y")
-
-    #get the index of the sp500
-    sp500.index
 
     #create a column for the target and the next day's close
     sp500["Tomorrow"] = sp500["Close"].shift(-1)
