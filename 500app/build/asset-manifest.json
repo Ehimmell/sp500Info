@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.b46d0a91.css",
-    "main.js": "/static/js/main.e801dcf0.js",
+    "main.js": "/static/js/main.bfc51a08.js",
     "static/media/news.png": "/static/media/news.18f1f4d9726203da7edd.png",
     "static/media/logo.png": "/static/media/logo.87854c5bad51c2418967.png",
     "static/media/NNPrediction.png": "/static/media/NNPrediction.e2e8e6ab1f793399a98f.png",
     "static/media/stockPrice.png": "/static/media/stockPrice.fed29ebf680d8b51cb52.png",
     "index.html": "/index.html",
     "main.b46d0a91.css.map": "/static/css/main.b46d0a91.css.map",
-    "main.e801dcf0.js.map": "/static/js/main.e801dcf0.js.map"
+    "main.bfc51a08.js.map": "/static/js/main.bfc51a08.js.map"
   },
   "entrypoints": [
     "static/css/main.b46d0a91.css",
-    "static/js/main.e801dcf0.js"
+    "static/js/main.bfc51a08.js"
   ]
 }

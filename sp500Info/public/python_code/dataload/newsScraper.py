@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup as bs
 import requests as rq
 import csv
 import datetime
-import dataPrep
+from stock.sp500Info.public.python_code.dataload import dataPrep
 from stock.sp500Info.public.python_code import constants
 
 #Method to scrape the wsj for headlines

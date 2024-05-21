@@ -6,7 +6,7 @@ import os
 from stock.sp500Info.public.python_code.predictions import stockPredict
 from stock.sp500Info.public.python_code import constants
 from sqlalchemy import create_engine
-import dataPrep
+from stock.sp500Info.public.python_code.dataload import dataPrep
 from stock.sp500Info.public.python_code.predictions import newsPredict
 
 
@@ -65,27 +65,25 @@ def sendDailyPrediction():
 
 
 #This method gets the daily prediction from the db
-def getDailyPrediction():
-
+def getDailyPrediction(date):
     try:
-    #get the date with no time in unix timestamp format
-        today = pd.Timestamp.today().normalize().timestamp()
-
+        date = pd.Timestamp(date).normalize().timestamp()
+        print(date)
         #get the engine to connect to the db
         engine = connectDB()
 
         #get the prediction for today by date index
-        prediction = pd.read_sql_query(f"SELECT * FROM {constants.STOCKPRED_TABLE} WHERE \"Date\" = {today}", engine)
+        prediction = pd.read_sql_query(f"SELECT * FROM {constants.STOCKPRED_TABLE} WHERE \"Date\" = {date}", engine)
 
         #close the connection
         engine.dispose()
 
         #return the prediction's buy proba
+        if(prediction.empty):
+            return "No Prediction for this Date"
         return prediction['Buy'].values[0]
-
     except (AttributeError, TypeError):
-        print("Could not establish a connection to the database", AttributeError, TypeError)
-        return None
+        return "No Prediction for this Date"
 
 
 def sendPredPrice():

@@ -24,9 +24,9 @@ def predict(sp500):
 
 def pricePredict(sp500):
 
-    model = load_model('../models/stockLSTM.keras')
+    model = load_model('/Users/himme/Downloads/git/stock/sp500Info/public/models/stockLSTM.keras')
 
-    with open('../../vectorizers/scaler.pkl', 'rb') as scaler:
+    with open('/Users/himme/Downloads/git/stock/sp500Info/public/vectorizers/scaler.pkl', 'rb') as scaler:
         scaler = p.load(scaler)
 
     sp_save = sp500.iloc[-1].copy()
@@ -55,4 +55,5 @@ def consolidatedPred(sp500):
     stock_pred = 1 if stock_pred > 0.5 else 0
 
     return ((lstm_pred * 1.5) + stock_pred) / 2.5
+
 

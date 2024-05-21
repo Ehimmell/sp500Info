@@ -2,13 +2,15 @@ from flask import Flask, request, jsonify
 from stock.sp500Info.public.python_code.dataload import dataInteract as di
 from flask_cors import CORS
 from stock.sp500Info.public.python_code.dataload import statMaker
+import pandas as pd
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*", "methods": ["GET", "POST", "PUT", "DELETE"], "allow_headers": "*"}})
 
 @app.route('/api/daily-prediction', methods=['GET'])
 def get_prediction():
-    prediction = di.getDailyPrediction()
+    inputDate = request.args.get('date', default=pd.Timestamp.today().normalize(), type=str)
+    prediction = di.getDailyPrediction(inputDate)
     return jsonify(prediction)
 
 @app.route('/api/daily-stock', methods=['GET'])

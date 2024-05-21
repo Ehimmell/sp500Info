@@ -1,6 +1,6 @@
-export async function getDailyPrediction() {
+export async function getPredictionOnDate(date = new Date().toISOString().split('T')[0] ){
     try{
-        const response = await fetch('http://127.0.0.1:5000/api/daily-prediction', { mode: 'cors' });
+        const response = await fetch(`http://127.0.0.1:5000/api/daily-prediction?date=${date}`, { mode: 'cors' });
         if (!response.ok) {
             throw new Error('Failed to fetch daily predictions');
         }

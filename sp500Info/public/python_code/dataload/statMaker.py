@@ -2,12 +2,11 @@
 
 #Imports
 import matplotlib.pyplot as plt
-import dataInteract
 import io
 import base64
 import urllib.parse
 import pandas as pd
-import dataPrep
+from stock.sp500Info.public.python_code.dataload import dataPrep
 
 #Method to create a trend graph
 def trendGraph(timeFrame):

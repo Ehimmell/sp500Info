@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {getDailyPrediction, getDailyPrice, getDailyNews} from "../api.js";
+import {getPredictionOnDate, getDailyPrice, getDailyNews} from "../api.js";
 
 export function PredictBio() {
     return (
@@ -23,11 +23,26 @@ export function TodayPrediction() {
     const [prediction, setPrediction] = useState('');
     const [price, setPrice] = useState('');
     const [news, setNews] = useState('');
+    const [date, setDate] = useState('');
     const handlePredictionClick = async () => {
-        const prediction = await getDailyPrediction();
+        const prediction = await getPredictionOnDate();
         const price = await getDailyPrice();
+        console.log(prediction)
         setPrediction(prediction);
         setPrice(price.substring(0, price.indexOf('.') + 3));
+    }
+
+    const handleSpecificPredictionClick = async () => {
+        if(date === ''){
+            alert("Please select a date");
+            return;
+        }
+        const prediction = await getPredictionOnDate(date);
+        setPrediction(prediction);
+    }
+
+    const handleDateChange = () => {
+        setDate(document.getElementById("date").value);
     }
 
     const handleNewsClick = async () => {
@@ -45,6 +60,8 @@ export function TodayPrediction() {
                 return "The S&P 500 is likely to go up today.";
             } else if (predNum < 0.45) {
                 return "The S&P 500 is likely to go down today.";
+            } else if (isNaN(predNum)) {
+                return "No prediction available for today.";
             } else {
                 return "The S&P 500 is likely to stay the same today.";
             }
@@ -60,11 +77,16 @@ export function TodayPrediction() {
                 <p className="pred">{price}</p>
                 <p className="pred-explain">{predExplaination()}</p>
             </div>
+            <div className = "daily-pred-container">
+                <input type={"date"} id = {"date"} onChange={handleDateChange}/>
+                <button className="pred-rounded-button" onClick={handleSpecificPredictionClick}>Get Prediction for Specific Date</button>
+            </div>
             <h1 className="pred-header">Today's News Classification</h1>
             <div className="daily-pred-container">
                 <button className="pred-rounded-button" onClick={handleNewsClick}>Get Today's News Classification</button>
                 <p className="pred">{news}</p>
             </div>
+            <input type={"date"} id = {"date"} onChange={handleDateChange}/>
         </div>
     );
 }
