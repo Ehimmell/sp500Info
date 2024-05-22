@@ -100,7 +100,7 @@ export function TodayPrediction() {
             </div>
             <div className={"daily-pred-container"}>
                 <input type={"date"} id={"newsDate"} onChange={handleDateChange}/>
-                <button className={"pred-rounded-button"} onClick={handleSpecificNewsClassClick}>Get Prediction for
+                <button className={"pred-rounded-button"} onClick={handleSpecificNewsClassClick}>Get Classification for
                     Specific Date
                 </button>
             </div>
