@@ -61,9 +61,9 @@ export async function getDailyPrice() {
     }
 }
 
-export async function getDailyNews() {
+export async function getDailyNews(date = new Date().toISOString().split('T')[0] ) {
     try {
-        const response = await fetch('http://127.0.0.1:5000/api/daily-news', {mode: 'cors'});
+        const response = await fetch(`http://127.0.0.1:5000/api/daily-news?date=${date}`, {mode: 'cors'});
         if (!response.ok) {
             throw new Error('Failed to fetch daily news');
         }

@@ -146,13 +146,13 @@ def sendNewsClass():
         print("Could not establish a connection to the database", AttributeError, TypeError)
 
 
-def getNewsClass():
+def getNewsClass(date):
     try:
-        today = pd.Timestamp.today().normalize().timestamp()
+        date = pd.Timestamp(date).normalize().timestamp()
 
         engine = connectDB()
 
-        newsClass = pd.read_sql_query(f"SELECT * FROM {constants.NEWS_TABLE} WHERE \"Date\" = {today}", engine)
+        newsClass = pd.read_sql_query(f"SELECT * FROM {constants.NEWS_TABLE} WHERE \"Date\" = {date}", engine)
 
         engine.dispose()
 

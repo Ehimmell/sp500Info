@@ -33,7 +33,8 @@ def get_price():
 
 @app.route('/api/daily-news', methods=['GET'])
 def get_news():
-    price = di.getPredPrice()
+    inputDate = request.args.get('date', default=pd.Timestamp.today().normalize(), type=str)
+    price = di.getPredPrice(inputDate)
     return jsonify(price)
 
 

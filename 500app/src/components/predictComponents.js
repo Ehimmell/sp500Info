@@ -24,6 +24,7 @@ export function TodayPrediction() {
     const [price, setPrice] = useState('');
     const [news, setNews] = useState('');
     const [date, setDate] = useState('');
+    const [newsDate, setNewsDate] = useState('')
     const handlePredictionClick = async () => {
         const prediction = await getPredictionOnDate();
         const price = await getDailyPrice();
@@ -41,6 +42,15 @@ export function TodayPrediction() {
         setPrediction(prediction);
     }
 
+    const handleSpecificNewsClassClick = async () => {
+        if(newsDate === '') {
+            alert("Please select a date");
+            return;
+        }
+        const prediction = await getDailyNews(newsDate);
+        setNews(prediction);
+    }
+
     const handleDateChange = () => {
         setDate(document.getElementById("date").value);
     }
@@ -50,7 +60,9 @@ export function TodayPrediction() {
         setNews(news);
     }
 
-
+    const handleNewsDateChange = () => {
+        setNewsDate(document.getElementById("newsDate").value);
+    }
 
     let predNum = parseFloat(prediction);
 
@@ -86,7 +98,11 @@ export function TodayPrediction() {
                 <button className="pred-rounded-button" onClick={handleNewsClick}>Get Today's News Classification</button>
                 <p className="pred">{news}</p>
             </div>
-            <input type={"date"} id = {"date"} onChange={handleDateChange}/>
+            <div className={"daily-pred-container"}>
+                <input type={"date"} id={"newsDate"} />
+            </div>
+            <input type={"date"} id = {"newsDate"} onChange={handleDateChange}/>
+            <button className={"daily-pred-container"} onClick={handleSpecificNewsClassClick}>Get Prediction for Specific Date</button>
         </div>
     );
 }
