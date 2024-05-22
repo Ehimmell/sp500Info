@@ -99,10 +99,11 @@ export function TodayPrediction() {
                 <p className="pred">{news}</p>
             </div>
             <div className={"daily-pred-container"}>
-                <input type={"date"} id={"newsDate"} />
+                <input type={"date"} id={"newsDate"} onChange={handleDateChange}/>
+                <button className={"pred-rounded-button"} onClick={handleSpecificNewsClassClick}>Get Prediction for
+                    Specific Date
+                </button>
             </div>
-            <input type={"date"} id = {"newsDate"} onChange={handleDateChange}/>
-            <button className={"daily-pred-container"} onClick={handleSpecificNewsClassClick}>Get Prediction for Specific Date</button>
         </div>
     );
 }
