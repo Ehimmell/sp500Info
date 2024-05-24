@@ -1,0 +1,1 @@
+require("dotenv").config();const apiKey=process.env.REACT_APP_API_KEY,engineId=process.env.REACT_APP_ENGINE_ID;module.exports={apiKey:apiKey,engineId:engineId};

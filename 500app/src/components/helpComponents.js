@@ -4,6 +4,14 @@ import graph1 from "../pictures/GraphGuide/GraphFirstStep.png"
 import graph2 from "../pictures/GraphGuide/GraphSecondStep.png"
 import graph3 from "../pictures/GraphGuide/GraphThirdStep.png"
 
+import stock1 from "../pictures/StockGuide/StockFirstStep.png"
+import stock2 from "../pictures/StockGuide/StockSecondStep.png"
+
+import news1 from "../pictures/NewsGuide/NewsFirstStep.png"
+import news2 from "../pictures/NewsGuide/NewsSecondStep.png"
+
+
+
 export function HelpBio() {
     const [tutorial, setTutorial] = useState("analyze");
     const handleTutorialChange = () => {
@@ -93,7 +101,34 @@ export function HelpPredict() {
                     extra step. Instead of just clicking the "Get Prediction" button, you'll need to input the date
                     you'd like to predict in the input box. The date should be in the format "YYYY-MM-DD".
                 </p>
+                <img className={"help-pic"} src={stock2} alt="Stock Guide 2"/>
             </div>
+            <p>
+                If you don't want to predict a specific date, you can just click the "Get Prediction" button to get the
+                predicted price for tomorrow, and whether the price is higher or lower than today's price.
+            </p>
+            <img className={"help-pic"} src={stock1} alt="Stock Guide 1"/>
+            <h2 className={"help-header"}>News Classification</h2>
+            <p>
+                News classification is a tool that uses an artificial intelligence to classify today's stock news as
+                good or bad. It works like this:
+            </p>
+            <div className = "optional-help">
+                <h3 className={"help-header"}>
+                    <em>Optional: </em> Get a Prediction for a Specific Date
+                </h3>
+                <p className={"p-analyze"}>
+                    Getting a prediction for a specific date is similar to getting today's prediction, but with one
+                    extra step. Instead of just clicking the "Get Prediction" button, you'll need to input the date
+                    you'd like to predict in the input box. The date should be in the format "YYYY-MM-DD".
+                </p>
+                <img src={news2} alt="News Guide 2" className="help-pic"/>
+            </div>
+            <p>
+                If you don't want to predict a specific date, you can just click the "Get Prediction" button to get the
+                predicted price for tomorrow, and whether the price is higher or lower than today's price.
+            </p>
+            <img src={news1} alt="News Guide 1" className="help-pic"/>=
         </div>
     )
 }
