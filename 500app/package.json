@@ -43,5 +43,8 @@
   },
   "browser": {
     "path": "./node_modules/path-browserify"
+  },
+  "resolutions": {
+    "nth-check": "2.0.1"
   }
 }
