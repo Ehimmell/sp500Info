@@ -1,0 +1,30 @@
+.select-analyze {
+}
+
+.select-analyze::-ms-expand {
+    display: none;
+}
+
+.select-analyze::after {
+    content: '▼';
+    position: absolute;
+    right: 10px;
+}
+
+.analyze-rounded-button {
+    border: none;
+    border-radius: 6px;
+    padding: 30px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 100%;
+    margin: 4px 2px;
+    cursor: pointer;
+    height:100%;
+    background-color:white;
+}
+
+.analyze-input {
+    margin-right:3%;
+}

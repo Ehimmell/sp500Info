@@ -1,6 +1,6 @@
 import {Bio, Pitch} from "../components/bioComponents.js";
 import React from "react";
-import '../index.css';
+import '../components/css/index.css';
 
 function About() {
     return (

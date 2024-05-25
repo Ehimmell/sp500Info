@@ -1,0 +1,79 @@
+.daily-pred-container {
+    display: flex;
+    background-color: aliceblue;
+    border: 2px solid darkgray;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 10%;
+    position: relative;
+    margin-top: 1%;
+}
+
+.pred {
+    margin-top: 0.8%;
+    margin-left: 10%;
+    font-size: 20px;
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+.pred-explain {
+    margin-top: 1%;
+    margin-left: 10%;
+    font-size: 20px;
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+.pred-header {
+    font-family: Signifier, 'Times New Roman', Times, serif;
+    font-size: 30px;
+    margin-left: 10%;
+    padding-top: 15%;
+}
+
+.analyze-select-header {
+    font-family: Signifier, 'Times New Roman', Times, serif;
+    font-size: 30px;
+    margin-left: 10%;
+}
+
+.graph-container {
+    display: inline-block;
+    width: 100%;
+    background-color: aliceblue;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 10%;
+    margin-right:3%;
+    position: relative;
+}
+
+.analyze-main-menu {
+    display: flex;
+    font-family: Signifier, 'Times New Roman', Times, serif;
+    font-size: 45px;
+    margin-left: 10%;
+    position: relative;
+    margin-top: 3%;
+}
+
+.analyze-select {
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 30px;
+    margin-right:3%;
+    height:20px;
+}
+
+.pred-rounded-button {
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 100%;
+    margin: 4px 2px;
+    cursor: pointer;
+    height:100%;
+    background-color:white;
+}
+

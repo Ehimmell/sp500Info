@@ -1,5 +1,5 @@
 import React from 'react';
-import '../index.css';
+import '../components/css/index.css';
 import {HelpBio} from '../components/helpComponents.js';
 
 function Help() {

@@ -1,0 +1,157 @@
+.sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    display: flex; /* Make the direct children layout in a row */
+    width: 100%;
+    min-height: 100px;
+    background: linear-gradient(to bottom, darkgray, ghostwhite);
+    background-size: 300% 100%; /* Make the background larger than the element */
+    align-items: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.sticky-top > * {
+    margin-right: 20px;
+}
+
+.logo-header {
+    border: 2px solid black;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    margin: 15px;
+}
+
+.main-body {
+    background-color: ghostwhite;
+    overflow-y: scroll;
+}
+
+.logo-header:hover {
+    transform: scale(1.2);
+    transition: 0.8s;
+}
+
+.title {
+    padding-top: 10%;
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif
+}
+
+.title-add {
+    font-family: Signifier, 'Times New Roman', Times, serif;
+    font-size: 10px;
+    padding-top: 10px;
+}
+
+.title:hover {
+    cursor: pointer;
+}
+
+.function {
+    width: 100%;
+    display: flex;
+    position: relative;
+    padding-top: 3.5%;
+    margin-top: 3.5%;
+    margin-bottom: 3.5%;
+    padding-bottom: 3.5%;
+    transform: translateY(100px);
+    align-content: center;
+    border: 2px solid darkgray;
+    background-color: aliceblue;
+}
+
+a {
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Inherits color from parent element */
+    background-color: transparent; /* Makes background transparent */
+    border: none; /* Removes border */
+}
+
+
+.function-description {
+    display: block;
+    padding-left: 20px;
+    padding-right: 30px;
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif
+}
+
+
+.desc-top {
+    padding-bottom: 10px;
+    font-family: Signifier, 'Times New Roman', Times, serif;
+    font-size: 45px;
+}
+
+.desc-bottom {
+    font-size: 15px;
+    padding-top: 10px;
+}
+
+.desc-brief {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding-top: 7%;
+    padding-bottom: 7%;
+    border: 2px solid darkgray;
+    transform: translateY(130%);
+    background-color: aliceblue;
+}
+
+.function-image {
+    height: 15%;
+    width: 22.5%;
+    padding-left: 5%;
+}
+
+.brief-header {
+    padding-left: 5%;
+    font-family: Signifier, 'Times New Roman', Times, serif;
+    font-size: 15px;
+    align-content: center;
+}
+
+.brief-content {
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    padding-left: 5%;
+    width: 75%; /* Limit the width to 80% of the parent container */
+    margin: 0 auto; /* Center the text within the parent container */
+    overflow: clip;
+}
+
+.menu-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    padding-left: 3.3%;
+    font-size: inherit;
+    cursor: pointer;
+    outline: none;
+}
+
+.sticky-option {
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    padding-left: 3.3%;
+}
+
+.simple-bottom-space{
+    padding-bottom: 5%;
+}
+
+
+
+.generic-soehne {
+    margin-top: 5%;
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+

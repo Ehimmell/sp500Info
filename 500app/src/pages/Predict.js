@@ -1,6 +1,6 @@
 import {PredictBio, TodayPrediction} from "../components/predictComponents.js";
 import React from "react";
-import '../index.css';
+import '../components/css/index.css';
 function Predict() {
     return (
         <div>

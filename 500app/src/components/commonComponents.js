@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import '../index.css';
+import './css/common.css';
 import {getDailyPrediction, getTrendGraph, getStat, getDailyPrice} from '../api.js';
 import logo from '../pictures/logo.png';
 

@@ -1,0 +1,40 @@
+.select-help {
+    font-size:40px;
+    width:150px;
+    height:25px;
+    margin-bottom:5%;
+}
+
+.select-help::-ms-expand {
+    display: none;
+}
+
+.select-help::after {
+    content: '▼';
+    position: absolute;
+    right: 10px;
+}
+
+.help-header {
+    font-family: Signifier, 'Times New Roman', Times, serif;
+    margin-top: 7%;
+    margin-bottom: 2.5%;
+}
+
+.help-pic {
+    width:90%;
+    height:75%;
+    border: 15px solid darkgray;
+    margin-bottom:2.5%;
+    margin-top:2.5%;
+}
+
+.optional-help {
+    margin-left:10%;
+    margin-bottom:5%;
+}
+
+.search-results {
+    margin-top: 2%;
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import '../index.css';
+import './css/bio.css';
+import './css/common.css';
 
 export function Bio() {
     return (

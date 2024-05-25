@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './components/css/index.css';
 import App from './pages/Main.js';
 import About from './pages/About.js';
 import Predict from './pages/Predict.js';

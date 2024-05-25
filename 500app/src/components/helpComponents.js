@@ -1,5 +1,8 @@
 import React, {useState} from "react";
-import "../index.css";
+import './css/help.css';
+import './css/common.css';
+import './css/bio.css';
+import './css/preds.css';
 import graph1 from "../pictures/GraphGuide/GraphFirstStep.png"
 import graph2 from "../pictures/GraphGuide/GraphSecondStep.png"
 import graph3 from "../pictures/GraphGuide/GraphThirdStep.png"
@@ -47,29 +50,29 @@ export function HelpAnalyze() {
             <h1 className={"help-header"}>
                 Analyze
             </h1>
-            <p className={"p-analyze"}>
+            <p className={"generic-soehne"}>
                 Analyze generates easily interpretable stock market data. Each mode takes in certain specifications to
                 allow for a highly customizable experience. Here's how to use it:
             </p>
-            <p className={"p-analyze"}>
+            <p className={"generic-soehne"}>
                 First, select the mode you'd like to use. Both are similar in terms of use, but tutorials for both are
                 included here.
             </p>
-            <h2 className={"help-header"}>
+            <h2 className={"generic-soehne"}>
                 Graph
             </h2>
             <img src={graph1} alt="Graph Guide 1" className="help-pic"/>
-            <p className={"p-analyze"}>
+            <p className={"generic-soehne"}>
                 First, select the type of graph you'd like to create. You can choose from a price graph, price ratio
                 graph, trend graph, and close over open graph.
             </p>
             <img src={graph2} alt="Graph Guide 2" className="help-pic"/>
-            <p className={"p-analyze"}>
+            <p className={"generic-soehne"}>
                 Next, input the time frame you'd like to view. This will determine the length of time the graph will
                 display.
             </p>
             <img src={graph3} alt="Graph Guide 3" className="help-pic"/>
-            <p className={"p-analyze"}>
+            <p className={"generic-soehne"}>
                 Finally, click the "Get Data" button to generate the graph.
             </p>
         </div>

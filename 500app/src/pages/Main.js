@@ -1,5 +1,5 @@
 
-import '../index.css';
+import '../components/css/index.css';
 import {Features, Brief} from '../components/mainPageComponents.js';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
