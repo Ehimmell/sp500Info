@@ -3,6 +3,10 @@ from stock.sp500Info.public.python_code.dataload import dataInteract as di
 from flask_cors import CORS
 from stock.sp500Info.public.python_code.dataload import statMaker
 import pandas as pd
+from dotenv import load_dotenv
+import os
+import requests
+
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*", "methods": ["GET", "POST", "PUT", "DELETE"], "allow_headers": "*"}})
@@ -36,6 +40,24 @@ def get_news():
     inputDate = request.args.get('date', default=pd.Timestamp.today().normalize(), type=str)
     price = di.getPredPrice(inputDate)
     return jsonify(price)
+
+@app.route('/api/search', methods=['GET'])
+def search():
+    ticker = request.args.get('query', default='AAPL', type=str)
+    load_dotenv()
+    api_key = os.getenv('API_KEY')
+    engine_id = os.getenv('ENGINE_ID')
+    url = 'https://www.googleapis.com/customsearch/v1'
+    params = {
+        'key': api_key,
+        'cx': engine_id,
+        'q': 'stock symbol for ' + ticker
+    }
+    response = requests.get(url, params=params)
+    response_json = response.json()
+    items = response_json.get('items', [])  # Get 'items' if it exists, otherwise return an empty list
+    print(items)
+    return jsonify(items)
 
 
 if __name__ == '__main__':

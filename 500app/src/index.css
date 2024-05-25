@@ -315,8 +315,9 @@ a {
 
 .select-help {
     font-size:40px;
-    width:100px;
+    width:150px;
     height:25px;
+    margin-bottom:5%;
 }
 
 .select-help::-ms-expand {
@@ -346,4 +347,14 @@ a {
 .optional-help {
     margin-left:10%;
     margin-bottom:5%;
+}
+
+.generic-soehne {
+    margin-top: 5%;
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+.search-results {
+    margin-top: 2%;
+    font-family: Soehne, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
 }

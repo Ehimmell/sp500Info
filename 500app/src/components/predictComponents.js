@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import '../index.css';
-import {getDailyNews, getDailyPrice, getPredictionOnDate} from '../api.js';
-import {getSearchedTicker} from './search.js';
+import {getDailyNews, getDailyPrice, getPredictionOnDate, getSearchResults} from '../api.js';
 
 export function PredictBio() {
 
@@ -27,8 +26,6 @@ export function TodayPrediction() {
     const [price, setPrice] = useState('');
     const [news, setNews] = useState('');
     const [date, setDate] = useState('');
-    const [query, setQuery] = useState('');
-    const [results, setResults] = useState([]);
     const [newsDate, setNewsDate] = useState('');
     const handlePredictionClick = async () => {
         const prediction = await getPredictionOnDate();
@@ -56,10 +53,6 @@ export function TodayPrediction() {
         setNews(prediction);
     }
 
-    const handleSearchChange = () => {
-        setQuery(document.getElementById("tickSearch").value);
-    }
-
     const handleDateChange = () => {
         setDate(document.getElementById("date").value);
     }
@@ -71,12 +64,6 @@ export function TodayPrediction() {
 
     const handleNewsDateChange = () => {
         setNewsDate(document.getElementById("newsDate").value);
-    }
-
-    const handleSearch = async () => {
-        const results = await getSearchedTicker(query);
-        console.log(results);
-        setResults(results);
     }
 
     let predNum = parseFloat(prediction);
@@ -118,8 +105,6 @@ export function TodayPrediction() {
                 <button className={"pred-rounded-button"} onClick={handleSpecificNewsClassClick}>Get Classification for
                     Specific Date
                 </button>
-                <input id={"tickSearch"} onChange={handleSearchChange} type={"text"}/>
-                <button onClick = {handleSearch}>Search</button>
             </div>
         </div>
     );

@@ -76,3 +76,19 @@ export async function getDailyNews(date = new Date().toISOString().split('T')[0]
         return error;
     }
 }
+
+export async function getSearchResults(query) {
+    try {
+        const response = await fetch(`http://127.0.0.1:5000/api/search?query=${query}`, {mode: 'cors'});
+        if (!response.ok) {
+            throw new Error('Failed to fetch search results');
+        }
+
+        let data = await response.json();
+        const titles = data.map((item) => item.title);
+        return titles.slice(0, 1);
+    } catch (error) {
+        console.error('Error:', error);
+        return error;
+    }
+}
