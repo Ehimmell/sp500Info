@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 from stock.sp500Info.public.python_code.dataload import dataInteract as di
 from flask_cors import CORS
 from stock.sp500Info.public.python_code.dataload import statMaker
+from stock.sp500Info.public.python_code.predictions import stockPredict as sp
+from stock.sp500Info.public.python_code.dataload import dataPrep as dp
 import pandas as pd
 from dotenv import load_dotenv
 import os
@@ -58,6 +60,16 @@ def search():
     items = response_json.get('items', [])  # Get 'items' if it exists, otherwise return an empty list
     print(items)
     return jsonify(items)
+
+@app.route('/api/specific-stock-info', methods=['GET'])
+def searchSpecStock():
+    ## still in progress
+    ticker = request.args.get('ticker', default='AAPL', type=str)
+    stock = dp.prepareSpecData(ticker)
+    consolidatedPred = sp.consolidatedPred(stock)
+    predPrice = sp.pricePredict(stock)
+    currPrice = stock['Close'].iloc[-1]
+    return jsonify("Not implemented yet")
 
 
 if __name__ == '__main__':
