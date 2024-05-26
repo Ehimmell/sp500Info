@@ -69,7 +69,15 @@ def searchSpecStock():
     consolidatedPred = sp.consolidatedPred(stock)
     predPrice = sp.pricePredict(stock)
     currPrice = stock['Close'].iloc[-1]
-    return jsonify("Not implemented yet")
+    toReturn = {'prediction': consolidatedPred, 'price': predPrice, 'currentPrice': currPrice}
+    return jsonify(toReturn)
+
+@app.route('/api/spec-graph', methods=['GET'])
+def getSpecGraph():
+    ticker = request.args.get('ticker', default='AAPL', type=str)
+    stock = dp.prepareSpecData(ticker)
+    time_frame = request.args.get('timeFrame', default=5, type=int)
+    return jsonify(statMaker.getGraph(time_frame, 'price', stock))
 
 
 if __name__ == '__main__':
