@@ -1,8 +1,5 @@
 import React, {useState} from "react";
-import './css/help.css';
-import './css/common.css';
-import './css/bio.css';
-import './css/preds.css';
+import './css/index.css';
 import graph1 from "../pictures/GraphGuide/GraphFirstStep.png"
 import graph2 from "../pictures/GraphGuide/GraphSecondStep.png"
 import graph3 from "../pictures/GraphGuide/GraphThirdStep.png"

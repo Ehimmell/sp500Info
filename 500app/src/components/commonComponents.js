@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import './css/common.css';
+import './css/index.css';
 import {getDailyPrediction, getTrendGraph, getStat, getDailyPrice} from '../api.js';
 import logo from '../pictures/logo.png';
 
@@ -33,6 +33,9 @@ export function StickyHeader({onButtonClick}) {
             </button>
             <button className={`menu-button ${clickedButton === 'support' ? 'clicked' : ''}`}
                     onClick={() => handleClick('support')}>Support Us
+            </button>
+            <button className={`menu-button ${clickedButton === 'spec' ? 'clicked' : ''}`}
+                    onClick={() => handleClick('spec')}>Specific Stock
             </button>
         </div>
     );

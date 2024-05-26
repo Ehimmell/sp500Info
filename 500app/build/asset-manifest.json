@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.5cf50931.css",
-    "main.js": "/static/js/main.58738f39.js",
+    "main.css": "/static/css/main.500ac6da.css",
+    "main.js": "/static/js/main.1d2aa495.js",
     "static/media/NewsSecondStep.png": "/static/media/NewsSecondStep.053153c42586e57020fa.png",
     "static/media/NewsFirstStep.png": "/static/media/NewsFirstStep.428b0fd66fcf91eeda8e.png",
     "static/media/GraphSecondStep.png": "/static/media/GraphSecondStep.73afa9e76302e7fcf1a3.png",
@@ -10,15 +10,16 @@
     "static/media/StockSecondStep.png": "/static/media/StockSecondStep.adf380ac7d7c2c9f439a.png",
     "static/media/StockFirstStep.png": "/static/media/StockFirstStep.f694e60a451505424edc.png",
     "static/media/news.png": "/static/media/news.18f1f4d9726203da7edd.png",
+    "static/media/Squidward_Tentacles_(fair_use).svg.png": "/static/media/Squidward_Tentacles_(fair_use).svg.604a683560f570244f4e.png",
     "static/media/logo.png": "/static/media/logo.87854c5bad51c2418967.png",
     "static/media/NNPrediction.png": "/static/media/NNPrediction.e2e8e6ab1f793399a98f.png",
     "static/media/stockPrice.png": "/static/media/stockPrice.fed29ebf680d8b51cb52.png",
     "index.html": "/index.html",
-    "main.5cf50931.css.map": "/static/css/main.5cf50931.css.map",
-    "main.58738f39.js.map": "/static/js/main.58738f39.js.map"
+    "main.500ac6da.css.map": "/static/css/main.500ac6da.css.map",
+    "main.1d2aa495.js.map": "/static/js/main.1d2aa495.js.map"
   },
   "entrypoints": [
-    "static/css/main.5cf50931.css",
-    "static/js/main.58738f39.js"
+    "static/css/main.500ac6da.css",
+    "static/js/main.1d2aa495.js"
   ]
 }

@@ -1,0 +1,19 @@
+.stretched-graph {
+    width:80vw;
+    height:60vh;
+    margin-left:10%;
+    margin-top:5%;
+    margin-bottom:5%;
+    border:1px solid black;
+}
+
+.dashboard {
+    display:flex;
+    margin-left:10%;
+}
+
+.dashboard > div {
+    display:block;
+    justify-content: center;
+    margin-right:25%;
+}

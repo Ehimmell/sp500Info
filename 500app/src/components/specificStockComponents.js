@@ -1,8 +1,8 @@
 import React from 'react';
-import './css/common.css';
-import './css/bio.css';
-import './css/preds.css';
-import './css/help.css';
+import './css/index.css';
+import {getSpecificStockInfo} from "../api.js";
+
+import squidward from '../pictures/Squidward_Tentacles_(fair_use).svg.png';
 
 export function SpecificDescription() {
     return (
@@ -18,20 +18,43 @@ export function SpecificDescription() {
 }
 
 export function SpecificStockComponents() {
-    const [ticker, setTicker] = React.useState('');
-
-    const handleTickerChange = () => {
-        setTicker(document.getElementById("ticker").value);
-    }
 
     const handleSearch = () => {
-
+        const response = getSpecificStockInfo(document.getElementById("ticker").value);
     }
 
     return (
-        <div className={"bio-container"}>
-            <input className = {"pred-rounded-button"} type="text" id="ticker" placeholder="Enter a stock's ticker" onChange={handleTickerChange}/>
-            <button className = {"pred-rounded-button"} onClick={handleTickerChange}>Search</button>
+        <div>
+            <div className={"bio-container"}>
+                <input className = {"pred-rounded-button"} type="text" id="ticker" placeholder="Enter a valid stock ticker"/>
+                <button className = {"pred-rounded-button"} onClick={handleSearch}>Search</button>
+            </div>
+            <Dashboard results={"poo"} priceGraph={squidward}/>
+        </div>
+    )
+}
+
+export function Dashboard({results, priceGraph}) {
+    if(results === undefined)
+        return (<div></div>);
+    if(priceGraph === undefined) return (
+        <div className = {"bio-container"}>
+            <p>test</p>
+        </div>
+    )
+    return (
+        <div className = {"bio-container"}>
+            <img src = {priceGraph} alt = "Stock Price Graph" className = "stretched-graph"/>
+            <div className={"dashboard"}>
+                <div>
+                    <p>peepee</p>
+                    <p>penis</p>
+                </div>
+                <div>
+                    <p>poopoo</p>
+                    <p>butt</p>
+                </div>
+            </div>
         </div>
     )
 }
