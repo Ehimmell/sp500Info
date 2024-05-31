@@ -22,7 +22,7 @@ def trendGraph(timeFrame):
 
     sp500 = sp500.iloc[-timeFrame:]
 
-    return savePlot(f'Trend_{timeFrame}', sp500)
+    return savePlot(f'Trend_{timeFrame}', sp500, f'Trend Over Last {timeFrame} Days')
 
 #Method to create a price graph
 def priceRatioGraph(timeFrame):
@@ -43,7 +43,7 @@ def priceRatioGraph(timeFrame):
 
     sp500 = sp500.iloc[-timeFrame:]
 
-    return savePlot(f'Price_Ratio_{timeFrame}', sp500)
+    return savePlot(f'Price_Ratio_{timeFrame}', sp500, f'Price Ratio Over Last {timeFrame} Days')
 
 
 def priceGraph(timeFrame):
@@ -51,7 +51,7 @@ def priceGraph(timeFrame):
 
     sp500 = sp500.iloc[-timeFrame:]
 
-    return savePlot('Close', sp500)
+    return savePlot('Close', sp500, f'Closing Price Over Last {timeFrame} Days')
 
 def closeOverOpenGraph(timeFrame):
 
@@ -61,15 +61,15 @@ def closeOverOpenGraph(timeFrame):
 
     sp500[f'Close_Over_Open_{timeFrame}'] = sp500['Close'] / sp500['Open']
 
-    return savePlot(f'Close_Over_Open_{timeFrame}', sp500)
+    return savePlot(f'Close_Over_Open_{timeFrame}', sp500, f'Close Over Open Ratio Over Last {timeFrame} Days')
 
 def prepSpecialGraph(ticker):
 
     stock = dataPrep.prepGraphData(ticker)
 
-    return savePlot('Close', stock)
+    return savePlot('Close', stock, f'{ticker} Closing Price Over Last 5 Days')
 
-def savePlot(column, sp500):
+def savePlot(column, sp500, title):
 
     if isinstance(sp500[column], (pd.Series, pd.DataFrame)):
         plt.clf()
@@ -77,7 +77,7 @@ def savePlot(column, sp500):
         sp500[column].plot(figsize=(10, 6))
 
         #set the title
-        plt.title(f'S&P 500 {column}')
+        plt.title(title)
 
         buf = io.BytesIO()
         plt.savefig(buf, format='png')
