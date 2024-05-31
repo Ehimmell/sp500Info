@@ -63,6 +63,12 @@ def closeOverOpenGraph(timeFrame):
 
     return savePlot(f'Close_Over_Open_{timeFrame}', sp500)
 
+def prepSpecialGraph(ticker):
+
+    stock = dataPrep.prepGraphData(ticker)
+
+    return savePlot('Close', stock)
+
 def savePlot(column, sp500):
 
     if isinstance(sp500[column], (pd.Series, pd.DataFrame)):

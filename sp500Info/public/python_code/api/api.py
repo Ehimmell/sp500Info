@@ -2,8 +2,8 @@ from flask import Flask, request, jsonify
 from stock.sp500Info.public.python_code.dataload import dataInteract as di
 from flask_cors import CORS
 from stock.sp500Info.public.python_code.dataload import statMaker
-from stock.sp500Info.public.python_code.predictions import stockPredict as sp
 from stock.sp500Info.public.python_code.dataload import dataPrep as dp
+from stock.sp500Info.public.python_code.predictions import stockPredict as sp
 import pandas as pd
 from dotenv import load_dotenv
 import os
@@ -45,7 +45,7 @@ def get_news():
 
 @app.route('/api/search', methods=['GET'])
 def search():
-    ticker = request.args.get('ticker', default='AAPL', type=str)
+    ticker = request.args.get('query', default='AAPL', type=str)
     load_dotenv()
     api_key = os.getenv('API_KEY')
     engine_id = os.getenv('ENGINE_ID')
@@ -68,18 +68,18 @@ def searchSpecStock():
     print(ticker)
     stock = dp.prepareSpecData(ticker)
     consolidatedPred = sp.consolidatedPred(stock)
+    pred = sp.predict(stock)
     predPrice = sp.pricePredict(stock)
     currPrice = stock['Close'].iloc[-1]
-    toReturn = [float(consolidatedPred), float(predPrice[0]), float(currPrice)]
+    toReturn = [float(consolidatedPred), float(predPrice[0]), float(currPrice), float(pred)]
     return jsonify(toReturn)
 
 ##needs work
 @app.route('/api/spec-graph', methods=['GET'])
 def getSpecGraph():
     ticker = request.args.get('ticker', default='AAPL', type=str)
-    stock = dp.prepareSpecData(ticker)
-    time_frame = request.args.get('timeFrame', default=5, type=int)
-    return jsonify(statMaker.getGraph(time_frame, 'price'))
+    graph = statMaker.prepSpecialGraph(ticker)
+    return jsonify(graph)
 
 
 if __name__ == '__main__':

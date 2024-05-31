@@ -115,6 +115,7 @@ def prepareSpecData(ticker = 'AAPL'):
     # drop the columns that are not predictors and could cause dataload leakage
     del sp500["Tomorrow"]
     del sp500["Target"]
+    del sp500["Volume"]
 
     stocks = {ticker: yf.Ticker(ticker).history(period="max") for ticker in constants.KEYSTOCKS_TICKERS}
 
@@ -144,3 +145,10 @@ def prepareSpecData(ticker = 'AAPL'):
 
     # return the prepared dataload
     return sp500
+
+def prepGraphData(ticker = 'AAPL'):
+    stock = yf.Ticker(ticker)
+
+    stock = stock.history(period="5d", interval="1h")
+
+    return stock
