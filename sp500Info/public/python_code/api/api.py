@@ -58,14 +58,12 @@ def search():
     response = requests.get(url, params=params)
     response_json = response.json()
     items = response_json.get('items', [])  # Get 'items' if it exists, otherwise return an empty list
-    print(items)
     return jsonify(items)
 
 @app.route('/api/specific-stock-info', methods=['GET'])
 def searchSpecStock():
     ## still in progress
     ticker = request.args.get('ticker', default='AAPL', type=str)
-    print(ticker)
     stock = dp.prepareSpecData(ticker)
     consolidatedPred = sp.consolidatedPred(stock)
     pred = sp.predict(stock)
