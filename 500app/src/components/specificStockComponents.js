@@ -23,15 +23,11 @@ export function SpecificStockComponents() {
     const [graph, setGraph] = useState('none');
 
     const handle = async () => {
-        setLoading(true);
-        setError(null);
         try {
             await handleSearch();
             await handleGraph();
         } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
+            console.error('Error:', err);
         }
     }
 
