@@ -43,7 +43,7 @@ def sendDailyPrediction():
         sp500 = sp500.iloc[-2000:].copy()
 
         #get the prediction
-        prediction = stockPredict.predict(sp500)
+        prediction = stockPredict.consolidatedPred(sp500)
 
         #preapre insert- the buy proba, sell proba, and date in unix timestamp format with no time
         toInsert = [prediction[constants.STOCKPRED_SELL], prediction[constants.STOCKPRED_BUY],

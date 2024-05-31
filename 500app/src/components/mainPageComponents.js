@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import './css/common.css';
+import './css/index.css';
 import ai from '../pictures/NNPrediction.png';
 import price from '../pictures/stockPrice.png';
 import news from '../pictures/news.png';

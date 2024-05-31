@@ -20,7 +20,7 @@ def predict(sp500):
     tomorrowPred = preds[-1]
 
     #return the prediction
-    return tomorrowPred
+    return tomorrowPred[constants.STOCKPRED_BUY].astype(float)
 
 def pricePredict(sp500):
 
@@ -44,7 +44,7 @@ def pricePredict(sp500):
 
     change_direction = "up" if predictions[-1] > sp_save['Close'] else "down"
 
-    return predictions[-1], change_direction
+    return predictions[-1][0], change_direction
 
 def consolidatedPred(sp500):
 
@@ -52,8 +52,12 @@ def consolidatedPred(sp500):
 
     stock_pred = predict(sp500)
 
+    print(stock_pred)
+
+    print(lstm_pred)
+
     stock_pred = 1 if stock_pred > 0.5 else 0
 
-    return ((lstm_pred * 1.5) + stock_pred) / 2.5
+    return (((lstm_pred * 1.5) + stock_pred) / 2.5).astype(float)
 
 

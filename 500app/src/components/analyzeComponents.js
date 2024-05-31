@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {getStat, getTrendGraph} from "../api.js";
-import './css/analyze.css';
-import './css/bio.css';
-import './css/common.css';
+import './css/index.css';
 
 export function AnalyzeExplain() {
     const [analyzeMode, setAnalyzeMode] = useState('graph');

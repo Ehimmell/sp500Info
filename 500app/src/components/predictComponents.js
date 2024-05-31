@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
-import './css/preds.css';
-import './css/common.css';
-import './css/bio.css';
+import './css/index.css';
 import {getDailyNews, getDailyPrice, getPredictionOnDate, getSearchResults} from '../api.js';
 
 export function PredictBio() {
