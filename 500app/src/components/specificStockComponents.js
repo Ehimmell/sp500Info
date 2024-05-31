@@ -21,8 +21,6 @@ export function SpecificStockComponents() {
     const [sPredPrice, setSPredPrice] = useState('');
     const [price, setPrice] = useState('');
     const [graph, setGraph] = useState('none');
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
 
     const handle = async () => {
         setLoading(true);
