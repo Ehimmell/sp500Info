@@ -99,9 +99,22 @@ export async function getSpecificStockInfo(ticker) {
         if (!response.ok) {
             throw new Error('Failed to fetch specific stock info');
         }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        return error;
+    }
+}
+
+export async function getSpecialGraph(ticker) {
+    try {
+        const response = await fetch(`http://127.0.0.1:5000/api/spec-graph?ticker=${ticker}`, {mode: 'cors'});
+        if (!response.ok) {
+            throw new Error('Failed to fetch special graph');
+        }
 
         const data = await response.json();
-        console.log(data);
         return data;
     } catch (error) {
         console.error('Error:', error);

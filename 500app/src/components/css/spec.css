@@ -1,6 +1,6 @@
 .stretched-graph {
     width:80vw;
-    height:60vh;
+    height:70vh;
     margin-left:10%;
     margin-top:5%;
     margin-bottom:5%;
@@ -15,5 +15,33 @@
 .dashboard > div {
     display:block;
     justify-content: center;
+    margin-right:20%;
+}
+
+.stretched-graph:not([src]) {
+    display:none;
+}
+
+.feedback-element {
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 100%;
+    margin: 4px 2% 4px 10%;
+    cursor: pointer;
+    height:100%;
+    background-color:white;
+}
+
+.dash-info {
+    transform: translateY(4%);
+    background-color: aliceblue;
+    border: 2px solid darkgray;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-top:5%;
     margin-right:25%;
 }

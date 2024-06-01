@@ -52,10 +52,6 @@ def consolidatedPred(sp500):
 
     stock_pred = predict(sp500)
 
-    print(stock_pred)
-
-    print(lstm_pred)
-
     stock_pred = 1 if stock_pred > 0.5 else 0
 
     return (((lstm_pred * 1.5) + stock_pred) / 2.5).astype(float)
